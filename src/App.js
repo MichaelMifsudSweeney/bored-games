@@ -12,8 +12,9 @@ function App() {
       {/* //NAV BAR COMPONENT
       //Filter bar component
       //Card List Component */}
-      <Navigation />
+      
       <BrowserRouter>
+      <Navigation />
         <Routes>
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<HomePage />} />
