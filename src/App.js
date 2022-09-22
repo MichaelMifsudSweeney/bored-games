@@ -19,7 +19,7 @@ function App() {
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/game/:id" element={<GameDetails />} />
-          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/profile/:userId" element={<ProfilePage />} />
           <Route path="/add" element={<AddBoardGamePage />} />
         </Routes>
         
