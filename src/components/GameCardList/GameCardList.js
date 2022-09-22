@@ -1,10 +1,11 @@
 import React from 'react'
 import GameCard from '../GameCard/GameCard'
-
+import './GameCardList.scss'
 function GameCardList({ gameCardData }) {
-    console.log(gameCardData)
+    
     return (
     <>
+        <div className="GameCardList">
         <div>GameCardList</div>
         {gameCardData.map((gameData) => {
             return <GameCard 
@@ -12,6 +13,7 @@ function GameCardList({ gameCardData }) {
             key={gameData.gameId}    
             />
         })}
+        </div>
     </>
     )
 }

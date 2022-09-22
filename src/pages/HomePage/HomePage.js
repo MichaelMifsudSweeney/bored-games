@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import GameCardList from '../../components/GameCardList/GameCardList'
 import AddBoardGamePage from '../AddBoardGamePage/AddBoardGamePage';
+import './HomePage.scss'
 const API_URL = process.env.REACT_APP_API_URL;
 function HomePage() {
     let [gameCardData, setGameCardData] = useState([])
@@ -22,11 +23,12 @@ function HomePage() {
 
     return (
         <>
-            <div>HomePage</div>
+            <div className="flexboxrow">
             <AddBoardGamePage />
             <GameCardList 
                 gameCardData={gameCardData}
             />
+            </div>
         </>
     )
 }
