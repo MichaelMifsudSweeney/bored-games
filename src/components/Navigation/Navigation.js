@@ -11,6 +11,9 @@ function Navigation() {
       <NavLink to="/home" activeClassName="selected">
       Home
       </NavLink>
+      <NavLink to="/add" activeClassName="selected">
+      Add a board game
+      </NavLink>
     </>
 
   )

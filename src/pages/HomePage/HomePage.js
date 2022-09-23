@@ -24,7 +24,7 @@ function HomePage() {
     return (
         <>
             <div className="flexboxrow">
-            <AddBoardGamePage />
+            
             <GameCardList 
                 gameCardData={gameCardData}
             />

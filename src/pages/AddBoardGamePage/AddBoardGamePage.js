@@ -8,8 +8,10 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import uuid4 from "uuid4";
+import { useNavigate } from "react-router-dom";
 
 const CURRENT_USER_ID = process.env.REACT_APP_CURRENT_USER_ID;
+const API_URL = process.env.REACT_APP_API_URL;
 function AddBoardGamePage() {
   //ok so I've got the server calling when you submit
   //now I just need to:
@@ -18,6 +20,7 @@ function AddBoardGamePage() {
   //generate the final object to send
   //rewire the api to just post whatever it gets
   //axios post it
+  let navigate = useNavigate();
   let [bgName, setbgName] = useState("")
   let [bgDescription, setbgDescription] = useState("")
   let [bgMinDuration, setbgMinDuration] = useState("")
@@ -86,7 +89,10 @@ function AddBoardGamePage() {
       "gameCondition": bgCondition,
       "gameReviews": []
     }
-
+    axios.post(`${process.env.REACT_APP_API_URL}/games/new`, newGame).then(() => {
+      navigate(-1)
+      return
+    })
     console.log(newGame)
   }
 
