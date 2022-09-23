@@ -12,7 +12,6 @@ function GameDetails() {
   const API_URL = process.env.REACT_APP_API_URL;
   let getGameDetailsDataFromServer = () => {
     axios.get(`${API_URL}/games/${param.gameId}`).then((res) => {
-      console.log(res.data.results)
       setGameDetailsFromServer(res.data.results)
     })
   }
