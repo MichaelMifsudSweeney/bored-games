@@ -25,7 +25,7 @@ function GameDetails() {
   return (<>
     <div>GameDetails</div>
     <GameDetailsInfo gameDetailsFromServer={gameDetailsFromServer}/>
-    {/* <GameCommentsList gameCardData={gameDetailsFromServer}/> */}
+    <GameCommentsList gameReviews={gameDetailsFromServer.gameReviews}/>
   </>
   )
 }

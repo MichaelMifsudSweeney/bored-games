@@ -1,10 +1,12 @@
 import React from 'react'
-import OwnerComment from '../OwnerComment/OwnerComment'
+import GameComment from '../GameComment/GameComment'
 
-function OwnerCommentList() {
+
+function OwnerCommentList({gameReviews}) {
   return ( <>
     <div>OwnerCommentList</div>
-    <OwnerComment />
+    
+    
     </>
   )
 }

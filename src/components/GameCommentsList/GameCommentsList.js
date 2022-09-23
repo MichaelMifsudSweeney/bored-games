@@ -1,10 +1,12 @@
 import React from 'react'
 import GameComment from '../GameComment/GameComment'
 
-function GameCommentsList() {
+function GameCommentsList({gameReviews}) {
   return ( <>
     <div>GameCommentsList</div>
-    <GameComment />
+    {gameReviews?.map((gameReview) => {
+      return <GameComment gameReview={gameReview}/>
+    })}
     </>
   )
 }

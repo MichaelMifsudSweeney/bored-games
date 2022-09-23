@@ -1,8 +1,12 @@
 import React from 'react'
 
-function GameComment() {
+function GameComment({gameReview}) {
   return (
-    <div>GameComment</div>
+    <>
+      <div>{gameReview.commentName}</div>
+      <div>{gameReview.commentText}</div>
+      <div>{gameReview.commentDate}</div>
+    </>
   )
 }
 
