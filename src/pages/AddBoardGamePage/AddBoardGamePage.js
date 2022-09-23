@@ -73,7 +73,7 @@ function AddBoardGamePage() {
 
   let submitNewBoardGameHandler = (e) => {
     e.preventDefault()
-    console.log("submitFiring")
+    // console.log("submitFiring")
     let newGame = {
       "gameId": uuid4(),
       "gameName": bgName,
@@ -93,12 +93,12 @@ function AddBoardGamePage() {
       navigate(-1)
       return
     })
-    console.log(newGame)
+    
   }
 
   let selectBoardGameHandler = (e) => {
-    console.log("onSubmit", e.target.innerText)
-    console.log("onSubmit", typeof (e.target.innerHTML))
+    // console.log("onSubmit", e.target.innerText)
+    // console.log("onSubmit", typeof (e.target.innerHTML))
     let selectedGameOption = options.find((option) => option.label === e.target.innerHTML)
     if (e.target.innerText !== undefined) {
       // console.log("this is fired")
@@ -117,6 +117,9 @@ function AddBoardGamePage() {
           // console.log()
          
           
+        })
+        .catch((err) => {
+          console.log(err)
         })
     }
   }
@@ -139,7 +142,7 @@ function AddBoardGamePage() {
           onChange={(e) => selectBoardGameHandler(e)}
           onInputChange={(event, newInputValue) => {
             // console.log(`https://api.boardgameatlas.com/api/search?name=${newInputValue}&client_id=JLBr5npPhV`)
-            console.log(event.target.value)
+            // console.log(event.target.value)
             onSearchInputChange(newInputValue)
           }}
           id="combo-box-demo"
