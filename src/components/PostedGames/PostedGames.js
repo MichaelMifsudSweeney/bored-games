@@ -1,12 +1,11 @@
 import React from 'react'
+import GamePosted from '../GamePosted/GamePosted'
 
-function PostedGames({gamesRented}) {
+function PostedGames({gamesRented, loadProfileData}) {
   return (<>
     <h2>Posted</h2>
-    {/* <h2>{gamesOwned}</h2> */}
     {gamesRented.map(gameRented => {
-      console.log(gameRented)
-        return <p>{gameRented.gameId}</p>
+        return <GamePosted gameRented={gameRented} loadProfileData={loadProfileData}/>
     })}
   </>
     
