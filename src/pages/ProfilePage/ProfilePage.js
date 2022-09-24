@@ -5,12 +5,14 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 import ReservedGameList from '../../components/ReservedGameList/ReservedGameList';
+import ReturnModal from '../../components/ReturnModal/ReturnModal';
 
 function ProfilePage() {
   let param = useParams()
   const API_URL = process.env.REACT_APP_API_URL;
   let [gamesOwned, setGamesOwned] = useState([]) 
   let [gamesRented, setGamesRented] = useState([])
+  let [showModal, setShowModal] = useState([false])
   
   let loadProfileData = () => {
     if (Object.keys(param).length !== 0) {
@@ -28,7 +30,7 @@ function ProfilePage() {
   
   return (<>
     <div>ProfilePage</div>
-    
+    <ReturnModal />
     
     <ReservedGameList gamesRented={gamesRented} />
     

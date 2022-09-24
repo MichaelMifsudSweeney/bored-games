@@ -1,7 +1,6 @@
 import React from 'react'
 
 function ReservedGame({ gameRented }) {
-  console.log("gameRented", gameRented)
   return (<>
     <div className="gamePosted">
       <img src={gameRented.image} alt="" />

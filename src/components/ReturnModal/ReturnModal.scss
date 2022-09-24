@@ -1,0 +1,16 @@
+.returnModal {
+    // display: none;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__container {
+        background-color: whitesmoke;
+        width: 50%;
+        padding: 10px;
+    }
+}
