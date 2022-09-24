@@ -1,14 +1,14 @@
 import React from 'react'
 
-function ReservedGame({gamesOwned}) {
+function ReservedGame({ gameRented }) {
+  console.log("gameRented", gameRented)
   return (<>
-    <div>ReservedGame</div>
-    <h2>Owned</h2>
-    {gamesOwned.map(gameOwned => {
-      console.log(gameOwned)
-        return <p>{gameOwned.gameId}</p>
-    })}
-    </>
+    <div className="gamePosted">
+      <img src={gameRented.image} alt="" />
+      <h3>{gameRented.gameName}</h3>
+      <button>RETURN</button>
+    </div>
+  </>
   )
 }
 

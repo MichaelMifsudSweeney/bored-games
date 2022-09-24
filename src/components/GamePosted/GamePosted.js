@@ -4,11 +4,10 @@ import './GamePosted.scss'
 const CURRENT_USER_ID = process.env.REACT_APP_CURRENT_USER_ID;
 const API_URL = process.env.REACT_APP_API_URL;
 
-function GamePosted({ gameRented, loadProfileData }) {
+function GamePosted({ gameOwned, loadProfileData }) {
 
     let removeHandler = () => {
-        //get the gameId and remove the object from the games array (probably using a filter and then feeding the filtered array back in)
-        axios.delete((`${API_URL}/games/${gameRented.gameId}`))
+        axios.delete((`${API_URL}/games/${gameOwned.gameId}`))
         .then(() => {
             loadProfileData()
         })
@@ -16,8 +15,8 @@ function GamePosted({ gameRented, loadProfileData }) {
 
     return (<>
         <div className="gamePosted">
-            <img src={gameRented.image} alt="" />
-            <p>{gameRented.gameName}</p>
+            <img src={gameOwned.image} alt="" />
+            <p>{gameOwned.gameName}</p>
             <button onClick={removeHandler}>Remove</button>
         </div>
     </>
