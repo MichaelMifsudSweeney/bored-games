@@ -6,6 +6,9 @@ import AddBoardGamePage from "./pages/AddBoardGamePage/AddBoardGamePage";
 import GameDetails from "./pages/GameDetailsPage/GameDetailsPage";
 import HomePage from './pages/HomePage/HomePage';
 import ProfilePage from "./pages/ProfilePage/ProfilePage";
+const CURRENT_USER_ID = process.env.REACT_APP_CURRENT_USER_ID;
+
+
 function App() {
   return (
     <div className="App">

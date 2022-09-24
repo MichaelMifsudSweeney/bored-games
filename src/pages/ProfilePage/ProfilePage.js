@@ -14,7 +14,7 @@ function ProfilePage() {
     if (Object.keys(param).length !== 0) {
       
       axios.get(`${API_URL}/user/${param.userId}`).then((response) => {
-        // console.log(response)
+        console.log(response)
         setGamesOwned(response.data.gamesOwned)
         setGamesRented(response.data.gamesRented)
       })
@@ -25,19 +25,10 @@ function ProfilePage() {
   return (<>
     <div>ProfilePage</div>
     
-    {gamesOwned.map(gameOwned => {
-      console.log(gameOwned)
-        return <p>{gameOwned.gameId}</p>
-    })}
-    <ReservedGame />
+    <ReservedGame gamesOwned={gamesOwned} />
 
-    <h2>Posted</h2>
-    {/* <h2>{gamesOwned}</h2> */}
-    {gamesRented.map(gameRented => {
-      console.log(gameRented)
-        return <p>{gameRented.gameId}</p>
-    })}
-    <PostedGames />
+    
+    <PostedGames gamesRented={gamesRented}/>
   </>
   )
 }
