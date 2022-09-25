@@ -22,7 +22,7 @@ function GameDetailsInfo({gameDetailsFromServer}) {
     <div>{gameDetailsFromServer.gameName}</div>
     <div>{gameDetailsFromServer.gameAvailability}</div>
     <div>{gameDetailsFromServer.gameCondition}</div>
-    <div>{gameDetailsFromServer.gmaeDescription}</div>
+    <div>{gameDetailsFromServer.gameDescription}</div>
     <div>{gameDetailsFromServer.gameDuration}</div>
     <div>{gameDetailsFromServer.gameMaxPlayers}</div>
     <div>{gameDetailsFromServer.gameMinPlayers}</div>

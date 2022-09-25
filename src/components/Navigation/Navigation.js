@@ -7,13 +7,13 @@ function Navigation() {
   return (
     <>
       <div className='boop'>Navigation</div>
-      <NavLink to={`profile/${CURRENT_USER_ID}`} activeClassName="selected">
+      <NavLink to={`profile/${CURRENT_USER_ID}`} >
       Profile
       </NavLink>
-      <NavLink to="/home" activeClassName="selected">
+      <NavLink to="/home">
       Home
       </NavLink>
-      <NavLink to="/add" activeClassName="selected">
+      <NavLink to="/add">
       Add a board game
       </NavLink>
     </>

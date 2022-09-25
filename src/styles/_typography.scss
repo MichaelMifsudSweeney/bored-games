@@ -1,0 +1,19 @@
+
+
+@font-face {
+    font-family: 'SFPro';
+    src: url("../assets/fonts/SF-Pro-Rounded-Bold.otf") format("otf"),
+    url("../assets/fonts/SF-Pro-Rounded-Bold.woff") format("woff"),
+    url("../assets/fonts/SF-Pro-Rounded-Bold.ttf") format("ttf");
+         font-weight: 600;
+         font-style:normal;
+}
+
+@font-face {
+    font-family: 'SFPro';
+    src: url("../assets/fonts/SF-Pro-Rounded-Regular.otf") format("otf"),
+    url("../assets/fonts/SF-Pro-Rounded-Regular.woff") format("woff"),
+    url("../assets/fonts/SF-Pro-Rounded-Bold.ttf") format("ttf");
+         font-weight: 400;
+         font-style:normal;
+}

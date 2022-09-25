@@ -1,0 +1,145 @@
+// MIXINS
+
+
+
+// IMPORTS
+
+@use './variables' as *;
+@use './typography' as *;
+
+
+
+@font-face {
+    font-family: 'SFPro';
+    src: url("../assets/fonts/SF-Pro-Rounded-Bold.otf") format("otf"),
+    url("../assets/fonts/SF-Pro-Rounded-Bold.woff") format("woff"),
+    url("../assets/fonts/SF-Pro-Rounded-Bold.ttf") format("ttf");
+         font-weight: 600;
+         font-style:normal;
+}
+
+@font-face {
+    font-family: 'SFPro';
+    src: url("../assets/fonts/SF-Pro-Rounded-Regular.otf") format("otf"),
+    url("../assets/fonts/SF-Pro-Rounded-Regular.woff") format("woff"),
+    url("../assets/fonts/SF-Pro-Rounded-Bold.ttf") format("ttf");
+         font-weight: 400;
+         font-style:normal;
+}
+
+// @font-face {
+//     font-family: 'Avenir';
+//     src: url("../assets/fonts/AvenirNextLTPro-Bold.otf") format("otf"),
+//          url("../assets/fonts/AvenirNextLTProBold.ttf") format("ttf");
+//          font-weight: 600;
+//          font-style:normal;
+// }
+
+
+// SCREENSIZING MIXINS
+
+@mixin tablet {
+    @media screen and (min-width: $tablet-breakpoint) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media screen and (min-width: $desktop-breakpoint) {
+        @content;
+    }
+}
+
+
+
+//TYPOGRAPHY 
+
+@mixin page-header() {
+    font-family: "SFPro";
+    font-size: 1.875rem;
+    line-height: 2.375rem;
+    font-weight: bold;
+
+    @include tablet {
+        font-size: 2.0625rem;
+        line-height: 2.75rem;
+    }
+}
+
+@mixin section-header() {
+    font-family: "SFPro";
+    font-size: .75rem;
+    line-height: 1.25rem;
+    font-weight: bold;
+}
+
+@mixin subheader() {
+    font-family: "Avenir";
+    font-size: 1.0625rem;
+    line-height: 1.125rem;
+    font-weight: 600;
+
+    @include tablet {
+        font-size: 1.1875rem;
+        line-height: 1.5625rem;
+    }
+}
+
+@mixin body-copy() {
+    font-family: "SFPro";
+    font-size: 1.0625rem;
+    line-height: 1.5625rem;
+    font-weight: 400;
+
+    @include tablet {
+        font-size: 1.125rem;
+        line-height: 1.5rem;
+    }
+}
+
+@mixin label-or-button() {
+    font-family: "SFPro";
+    font-size: 1rem;
+    line-height: 1.25rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+
+
+//UTILITY 
+
+@mixin flex-column() {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin input-styling() {
+    background-color: $subtle-emphasis;
+    padding: .5rem;
+    border: .0625rem solid $placeholder;
+    display: flex;
+    border-radius: .25rem;
+}
+
+@mixin button-styling($icon) {
+    background-color: $action;
+    width: 100%;
+    height: 3rem;
+    border: none;
+    color: $reverse-primary;
+    border-radius: 4px;
+    @include label-or-button();
+    background-image: url($icon);
+    background-repeat: no-repeat;
+    background-position: $spacing-2 center;
+
+    &:hover {
+        background-color: $action-hover;
+    }
+
+    @include tablet {
+        max-width: 200px;
+    }
+
+}

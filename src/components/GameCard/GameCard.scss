@@ -1,8 +1,19 @@
+// IMPORTS
+
+@use "../../styles/globals";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
 .gameCard {
     width: 50%;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    @include subheader;
     margin: 10px;
     &__img {
         width: 25%;
+    }
+    &__gameName {
+        font-family: 'SFPro';
+        color: black;
     }
 }

@@ -13,13 +13,6 @@ import { useNavigate } from "react-router-dom";
 const CURRENT_USER_ID = process.env.REACT_APP_CURRENT_USER_ID;
 const API_URL = process.env.REACT_APP_API_URL;
 function AddBoardGamePage() {
-  //ok so I've got the server calling when you submit
-  //now I just need to:
-  //get all the forms to be filled
-  //add any forms I need personally
-  //generate the final object to send
-  //rewire the api to just post whatever it gets
-  //axios post it
   let navigate = useNavigate();
   let [bgName, setbgName] = useState("")
   let [bgDescription, setbgDescription] = useState("")

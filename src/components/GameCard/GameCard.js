@@ -7,7 +7,7 @@ function GameCard({ gameData }) {
       <Link to={`/game/${gameData.gameId}`} >
       <div className="gameCard">
       <img src={gameData.image} alt="" className='gameCard__img' />
-      <h1>{gameData.gameName}</h1>
+      <h1 className='gameCard__gameName'>{gameData.gameName}</h1>
       <p>{gameData.gameCondition}</p>
       <p>{gameData.gameDescription}</p>
       <p>{gameData.gameMinPlayers} to {gameData.gameMaxPlayers} Players</p>
