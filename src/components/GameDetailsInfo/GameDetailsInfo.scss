@@ -1,0 +1,66 @@
+@use "../../styles/globals";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.gameDetailsInfo {
+    @include flex-column;
+    align-items: center;
+    width: 100%;
+    padding: 0 $spacing-4;
+    @include tablet {
+        flex-direction: row;
+        align-items: flex-start;
+        
+        
+    }
+    &__left {
+        @include flex-column;
+        width: 100%;
+        flex-shrink: 0;
+        @include tablet {
+            max-width: 50%;
+            padding-right: $spacing-4;
+        }
+    }
+
+    &__right {
+        @include flex-column;
+    }
+
+    &__reserve-button {
+        background-color: $action;
+        padding: $spacing-3;
+        border: none;
+        border-radius: 6px;
+        @include label-or-button;
+        color: white;
+    }
+
+    &__gamePhoto {
+        height: 80%;
+        width: fit-content;
+    }
+
+    &__description {
+        @include body-copy;
+    }
+
+    &__owner {
+        @include body-copy;
+        color: $secondary;
+    }
+
+    &__players-and-playtime {
+        @include body-copy;
+        color: $secondary;
+    }
+
+    &__title {
+        @include page-header
+    }
+
+    &__img-wrapper {
+        border-radius: 6px;
+        overflow: hidden;
+    }
+}

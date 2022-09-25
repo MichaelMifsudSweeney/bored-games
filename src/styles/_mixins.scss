@@ -38,17 +38,17 @@
 
 //TYPOGRAPHY 
 
-// @mixin page-header() {
-//     font-family: "SFPro";
-//     font-size: 1.875rem;
-//     line-height: 2.375rem;
-//     font-weight: bold;
+@mixin page-header() {
+    font-family: "SFPro";
+    font-size: 26px;
+    line-height: 32px;
+    font-weight: 600;
 
-//     @include tablet {
-//         font-size: 2.0625rem;
-//         line-height: 2.75rem;
-//     }
-// }
+    // @include tablet {
+    //     font-size: 2.0625rem;
+    //     line-height: 2.75rem;
+    // }
+}
 
 // @mixin section-header() {
 //     font-family: "SFPro";
@@ -83,13 +83,26 @@
     }
 }
 
-// @mixin label-or-button() {
-//     font-family: "SFPro";
-//     font-size: 1rem;
-//     line-height: 1.25rem;
-//     font-weight: bold;
-//     text-transform: uppercase;
-// }
+@mixin label-or-button() {
+    font-family: "SFPro";
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: bold;
+}
+
+@mixin caption-bold() {
+    font-family: "SFPro";
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: bold;
+}
+
+@mixin caption-reg() {
+    font-family: "SFPro";
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+}
 
 @mixin nav-link() {
     font-family: "SFPro";

@@ -2,7 +2,6 @@ import React from 'react'
 import GameCard from '../GameCard/GameCard'
 import './GameCardList.scss'
 function GameCardList({ gameCardData }) {
-    
     return (
     <>
         <div className="gameCardList">
