@@ -12,7 +12,8 @@ function ProfilePage() {
   const API_URL = process.env.REACT_APP_API_URL;
   let [gamesOwned, setGamesOwned] = useState([]) 
   let [gamesRented, setGamesRented] = useState([])
-  let [showModal, setShowModal] = useState([false])
+  let [selectedGame, setSelectedGame] = useState({})
+  let [showModal, setShowModal] = useState(false)
   
   let loadProfileData = () => {
     if (Object.keys(param).length !== 0) {
@@ -30,9 +31,14 @@ function ProfilePage() {
   
   return (<>
     <div>ProfilePage</div>
-    <ReturnModal />
+    {showModal ? <ReturnModal selectedGame={selectedGame} setShowModal={setShowModal} loadProfileData={loadProfileData}/> : <div></div>}
     
-    <ReservedGameList gamesRented={gamesRented} />
+    
+    <ReservedGameList 
+      gamesRented={gamesRented} 
+      setSelectedGame={setSelectedGame} 
+      setShowModal={setShowModal}
+      />
     
     <PostedGames gamesOwned={gamesOwned} loadProfileData={loadProfileData} />
   </>
