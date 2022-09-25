@@ -3,18 +3,24 @@ import { Link } from 'react-router-dom'
 import "./GameCard.scss"
 function GameCard({ gameData }) {
   return (
-    
-      <Link to={`/game/${gameData.gameId}`} >
-      <div className="gameCard">
-      <img src={gameData.image} alt="" className='gameCard__img' />
-      <h1 className='gameCard__gameName'>{gameData.gameName}</h1>
-      <p>{gameData.gameCondition}</p>
-      <p>{gameData.gameDescription}</p>
-      <p>{gameData.gameMinPlayers} to {gameData.gameMaxPlayers} Players</p>
-      <p>{gameData.gameDuration}</p>
+
+    <Link to={`/game/${gameData.gameId}`} className="gameCard" >
+      <div className="gameCard__img-container">
+        <div className="gameCard__top-fill"></div>
+        <img src={gameData.image} alt="" className='gameCard__img' />
       </div>
-      </Link>
-    
+      <div className="gameCard__text">
+        <div className="gameCard__left">
+          <div className='gameCard__gameName'>{gameData.gameName}</div>
+          <div className='gameCard__gameInfo'>{gameData.gameMinPlayers} to {gameData.gameMaxPlayers} Players</div>
+          <div className='gameCard__gameInfo'>{gameData.gameDuration} minutes</div>
+        </div>
+        <div className="gameCard__condition">
+          <div >{gameData.gameCondition}</div>
+        </div>
+      </div>
+    </Link>
+
   )
 }
 

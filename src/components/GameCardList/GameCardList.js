@@ -5,8 +5,7 @@ function GameCardList({ gameCardData }) {
     
     return (
     <>
-        <div className="GameCardList">
-        <div>GameCardList</div>
+        <div className="gameCardList">
         {gameCardData.map((gameData) => {
             return <GameCard 
             gameData={gameData}

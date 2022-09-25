@@ -23,12 +23,12 @@ function HomePage() {
 
     return (
         <>
-            <div className="flexboxrow">
+            
             
             <GameCardList 
                 gameCardData={gameCardData}
             />
-            </div>
+            
         </>
     )
 }

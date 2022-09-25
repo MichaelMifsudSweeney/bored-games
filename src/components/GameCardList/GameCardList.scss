@@ -1,0 +1,18 @@
+@use "../../styles/globals";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.gameCardList {
+    @include flex-column;
+    width: 100%;
+    align-items: center;
+    padding: $spacing-4;
+    gap: $spacing-4;
+    flex-wrap: wrap;
+    @include tablet {
+        flex-direction: row;
+        justify-content: center;
+        
+    }
+    
+}

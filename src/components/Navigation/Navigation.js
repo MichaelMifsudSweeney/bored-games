@@ -6,16 +6,24 @@ const CURRENT_USER_ID = process.env.REACT_APP_CURRENT_USER_ID;
 function Navigation() {
   return (
     <>
-      <div className='boop'>Navigation</div>
-      <NavLink to={`profile/${CURRENT_USER_ID}`} >
-      Profile
-      </NavLink>
-      <NavLink to="/home">
-      Home
-      </NavLink>
-      <NavLink to="/add">
-      Add a board game
-      </NavLink>
+      <section className='navBar'>
+        <div className="navBar__container">
+        <div className="navBar__title">
+          Bored Games
+        </div>
+        <div className="navBar__links">
+          <NavLink to={`profile/${CURRENT_USER_ID}`} className='navBar__link'>
+            Profile
+          </NavLink>
+          <div className="navBar__link">
+            Sign Out
+          </div>
+        </div>
+        </div>
+
+
+      </section>
+
     </>
 
   )

@@ -9,23 +9,7 @@
 
 
 
-@font-face {
-    font-family: 'SFPro';
-    src: url("../assets/fonts/SF-Pro-Rounded-Bold.otf") format("otf"),
-    url("../assets/fonts/SF-Pro-Rounded-Bold.woff") format("woff"),
-    url("../assets/fonts/SF-Pro-Rounded-Bold.ttf") format("ttf");
-         font-weight: 600;
-         font-style:normal;
-}
 
-@font-face {
-    font-family: 'SFPro';
-    src: url("../assets/fonts/SF-Pro-Rounded-Regular.otf") format("otf"),
-    url("../assets/fonts/SF-Pro-Rounded-Regular.woff") format("woff"),
-    url("../assets/fonts/SF-Pro-Rounded-Bold.ttf") format("ttf");
-         font-weight: 400;
-         font-style:normal;
-}
 
 // @font-face {
 //     font-family: 'Avenir';
@@ -54,41 +38,43 @@
 
 //TYPOGRAPHY 
 
-@mixin page-header() {
-    font-family: "SFPro";
-    font-size: 1.875rem;
-    line-height: 2.375rem;
-    font-weight: bold;
+// @mixin page-header() {
+//     font-family: "SFPro";
+//     font-size: 1.875rem;
+//     line-height: 2.375rem;
+//     font-weight: bold;
 
-    @include tablet {
-        font-size: 2.0625rem;
-        line-height: 2.75rem;
-    }
-}
+//     @include tablet {
+//         font-size: 2.0625rem;
+//         line-height: 2.75rem;
+//     }
+// }
 
-@mixin section-header() {
-    font-family: "SFPro";
-    font-size: .75rem;
-    line-height: 1.25rem;
-    font-weight: bold;
-}
+// @mixin section-header() {
+//     font-family: "SFPro";
+//     font-size: .75rem;
+//     line-height: 1.25rem;
+//     font-weight: bold;
+// }
 
+//used for home page item header
 @mixin subheader() {
-    font-family: "Avenir";
-    font-size: 1.0625rem;
-    line-height: 1.125rem;
+    font-family: "SFPro";
+    font-size: 21px;
+    line-height: 26px;
     font-weight: 600;
+    color: black;
 
     @include tablet {
         font-size: 1.1875rem;
         line-height: 1.5625rem;
     }
 }
-
+//used for home page item description, game details description
 @mixin body-copy() {
     font-family: "SFPro";
-    font-size: 1.0625rem;
-    line-height: 1.5625rem;
+    font-size: 13px;
+    line-height: 18px;
     font-weight: 400;
 
     @include tablet {
@@ -97,12 +83,18 @@
     }
 }
 
-@mixin label-or-button() {
+// @mixin label-or-button() {
+//     font-family: "SFPro";
+//     font-size: 1rem;
+//     line-height: 1.25rem;
+//     font-weight: bold;
+//     text-transform: uppercase;
+// }
+
+@mixin nav-link() {
     font-family: "SFPro";
-    font-size: 1rem;
+    font-size: 20px;
     line-height: 1.25rem;
-    font-weight: bold;
-    text-transform: uppercase;
 }
 
 

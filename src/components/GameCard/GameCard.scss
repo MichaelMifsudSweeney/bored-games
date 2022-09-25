@@ -5,15 +5,67 @@
 @use "../../styles/mixins" as *;
 
 .gameCard {
-    width: 50%;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    @include subheader;
-    margin: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
+    @include tablet {
+        width: 45%;
+    } 
+    @include desktop {
+        width: 30%;
+        max-width: 400px;
+    }
+    
+    &__img-container {
+        
+        height: 200px;
+        width: 100%;
+        @include flex-column;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+
+    }
     &__img {
-        width: 25%;
+        height: 90%;
+        width: fit-content;
+        padding: 10px;
+
     }
     &__gameName {
-        font-family: 'SFPro';
-        color: black;
+        @include subheader;
+    }
+
+    &__gameInfo {
+        @include body-copy;
+        color: $secondary;
+    }
+
+    &__text {
+        padding: $spacing-4;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__condition {
+        color: $positive-emphasis;
+        padding: $spacing-2 $spacing-3;
+        background-color: $positive-bg;
+        border-radius: 16px;
+        @include body-copy;
+        text-transform: uppercase;
+    }
+
+    &__top-fill {
+        width: 100%;
+        height: 100%;
+        background-color: $subtle-bg;
+        flex-shrink: 0;
+        flex-grow: 0;
+        position: absolute;
+        opacity: 0.2;
     }
 }
