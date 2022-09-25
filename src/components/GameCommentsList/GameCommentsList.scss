@@ -1,0 +1,8 @@
+@use "../../styles/globals";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.gameCommentsList {
+    @include flex-column;
+    gap: $spacing-3;
+}

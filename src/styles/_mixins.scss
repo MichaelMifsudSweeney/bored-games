@@ -104,6 +104,13 @@
     font-weight: 400;
 }
 
+@mixin caption-small() {
+    font-family: "SFPro";
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 400;
+}
+
 @mixin nav-link() {
     font-family: "SFPro";
     font-size: 20px;

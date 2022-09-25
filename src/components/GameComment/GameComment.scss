@@ -1,0 +1,15 @@
+@use "../../styles/globals";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.gameComment {
+    width: 100%;
+    &__name {
+        @include caption-bold;
+        color: $secondary;
+    }
+
+    &__comment-text {
+        @include body-copy;
+    }
+}

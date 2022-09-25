@@ -1,13 +1,14 @@
 import React from 'react'
 import GameComment from '../GameComment/GameComment'
+import './GameCommentsList.scss'
 
 function GameCommentsList({gameReviews}) {
-  console.log(gameReviews)
   return ( <>
-    <div>GameCommentsList</div>
+    <div className="gameCommentsList">
     {gameReviews?.map((gameReview) => {
       return <GameComment gameReview={gameReview}/>
     })}
+    </div>
     </>
   )
 }

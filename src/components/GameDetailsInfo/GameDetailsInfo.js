@@ -28,12 +28,21 @@ function GameDetailsInfo({ gameDetailsFromServer }) {
             <img src={gameDetailsFromServer.image} alt='' className='gameDetailsInfo__gamePhoto' />
           </div>
         </div>
-        <button onClick={reserveHandler} className='gameDetailsInfo__reserve-button'>RESERVE</button>
+        <div className="gameDetailsInfo__button-and-instructions">
+          <button onClick={reserveHandler} className='gameDetailsInfo__reserve-button'>RESERVE</button>
+          <div className="gameDetailsInfo__instructions">
+            You’ll be emailed with pickup instructions
+
+          </div>
+        </div>
       </div>
       <div className="gameDetailsInfo__right">
+
         <div className='gameDetailsInfo__title'>{gameDetailsFromServer.gameName}</div>
-        <div className='gameDetailsInfo__players-and-playtime'>{gameDetailsFromServer.gameMinPlayers}-{gameDetailsFromServer.gameMaxPlayers} players • {gameDetailsFromServer.gameDuration} minutes</div>
-        <div className='gameDetailsInfo__owner'> Posted by: {gameDetailsFromServer.ownerName}</div>
+        <div className="gameDetailsInfo__overview">
+          <div className='gameDetailsInfo__players-and-playtime'>{gameDetailsFromServer.gameMinPlayers}-{gameDetailsFromServer.gameMaxPlayers} players • {gameDetailsFromServer.gameDuration} minutes</div>
+          <div className='gameDetailsInfo__owner'> Posted by: {gameDetailsFromServer.ownerName}</div>
+        </div>
         <div>{gameDetailsFromServer.gameCondition}</div>
         <div className='gameDetailsInfo__description'>{gameDetailsFromServer.gameDescription}</div>
 

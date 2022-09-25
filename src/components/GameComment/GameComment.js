@@ -1,11 +1,12 @@
 import React from 'react'
 import './GameComment.scss'
-function GameComment({gameReview}) {
-  console.log(gameReview.commentDate)
+function GameComment({ gameReview }) {
   return (
     <>
-      <div>{gameReview.commentName}</div>
-      <div>{gameReview.commentText}</div>
+      <div className="gameComment">
+        <div className='gameComment__name'>{gameReview.commentName}</div>
+        <div className='gameComment__comment-text'>{gameReview.commentText}</div>
+      </div>
     </>
   )
 }
