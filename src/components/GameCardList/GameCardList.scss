@@ -10,8 +10,9 @@
     gap: $spacing-4;
     flex-wrap: wrap;
     @include tablet {
+        padding: 0;
         flex-direction: row;
-        justify-content: center;
+        justify-content: flex-start;
         
     }
     

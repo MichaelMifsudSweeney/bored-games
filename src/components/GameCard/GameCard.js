@@ -15,9 +15,7 @@ function GameCard({ gameData }) {
           <div className='gameCard__gameInfo'>{gameData.gameMinPlayers} to {gameData.gameMaxPlayers} Players</div>
           <div className='gameCard__gameInfo'>{gameData.gameDuration} minutes</div>
         </div>
-        <div className="gameCard__condition">
-          <div >{gameData.gameCondition}</div>
-        </div>
+        
       </div>
     </Link>
 

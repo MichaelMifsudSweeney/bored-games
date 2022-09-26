@@ -1,0 +1,26 @@
+@use "../../styles/globals";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.gameCondition{
+    
+    &__condition {
+        margin-bottom: $spacing-4;
+        padding: $spacing-2 $spacing-3;
+        
+        border-radius: 26px;
+        @include body-copy;
+        
+        width:fit-content;
+        &--positive {
+            background-color: $positive-bg;
+            color: $positive-emphasis;
+        }
+        &--negative {
+            background-color: $negative-bg;
+            color: $destructive-action;
+        }
+    }
+
+}
+

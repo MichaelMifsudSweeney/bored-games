@@ -5,10 +5,13 @@
 // form .MuiFormControl-root{
 //     @include input-styling;
 //     border: none;
-    
-    
+
+
 //     width: 100%;
 // }
+
+
+
 
 // .MuiInputBase-root {
 //     color: red;
@@ -25,6 +28,7 @@
     width: 100%;
     @include flex-column;
     align-items: center;
+
     &__container {
         max-width: 900px;
     }
@@ -36,40 +40,57 @@
     &__title {
         @include page-header;
     }
+
     &__listOfInputs {
         display: flex;
         flex-wrap: wrap;
         gap: 10px
     }
+
     &__bgName {
         @include input-styling();
         flex-grow: 1;
     }
+
     &__bgMinDuration {
         @include input-styling();
         flex-grow: 1;
     }
+
     &__bgMaxDuration {
         @include input-styling();
         flex-grow: 1;
     }
+
     &__bgMinPlayers {
         @include input-styling();
         flex-grow: 1;
     }
+
     &__bgMaxPlayers {
         @include input-styling();
         flex-grow: 1;
     }
+
     &__bgDescription {
         @include input-styling();
         width: 100%;
         height: 150px;
         resize: none
     }
+
     &__bgCondition {
         @include input-styling();
         flex-grow: 1;
+        background-image: url('../../assets/icons/arrow_drop_down_FILL0_wght400_GRAD0_opsz48.png');
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 20px 20px;
+        
+    }
+
+    select {
+        appearance: none;
     }
 
     &__button-bar {
@@ -84,5 +105,5 @@
         @include button-styling;
         width: 20%;
     }
-    
+
 }

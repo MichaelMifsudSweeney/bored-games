@@ -77,12 +77,18 @@
     }
 
     &__title {
-        @include page-header
+        @include page-header;
     }
 
     &__img-wrapper {
         border-radius: 6px;
         overflow: hidden;
         flex-shrink: 0;
+    }
+
+    &__title {
+        
+        
+        margin: 0;
     }
 }

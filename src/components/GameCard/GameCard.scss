@@ -14,7 +14,7 @@
         width: 45%;
     } 
     @include desktop {
-        width: 30%;
+        width: 31%;
         max-width: 400px;
     }
     
@@ -50,14 +50,7 @@
         align-items: center;
     }
 
-    &__condition {
-        color: $positive-emphasis;
-        padding: $spacing-2 $spacing-3;
-        background-color: $positive-bg;
-        border-radius: 16px;
-        @include body-copy;
-        text-transform: uppercase;
-    }
+    
 
     &__top-fill {
         width: 100%;

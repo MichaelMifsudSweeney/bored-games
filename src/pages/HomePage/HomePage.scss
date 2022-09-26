@@ -1,3 +1,16 @@
-.flexboxrow {
-    display: flex;
+@use "../../styles/globals";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.homepage {
+    width: 100%;
+    @include flex-column;
+    align-items: center;
+    &__content {
+        width: 100%;
+        max-width: 900px;
+    } 
+    &__header {
+        @include page-header;
+    }
 }

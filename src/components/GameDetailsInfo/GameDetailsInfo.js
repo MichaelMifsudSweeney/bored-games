@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react'
 import GameCommentsList from '../GameCommentsList/GameCommentsList';
+import GameCondition from '../GameCondition/GameCondition';
 import './GameDetailsInfo.scss'
 
 function GameDetailsInfo({ gameDetailsFromServer }) {
@@ -48,7 +49,8 @@ function GameDetailsInfo({ gameDetailsFromServer }) {
           <div className='gameDetailsInfo__players-and-playtime'>{gameDetailsFromServer.gameMinPlayers}-{gameDetailsFromServer.gameMaxPlayers} players • {gameDetailsFromServer.gameDuration} minutes</div>
           <div className='gameDetailsInfo__owner'> Posted by: {gameDetailsFromServer.ownerName}</div>
         </div>
-        <div>{gameDetailsFromServer.gameCondition}</div>
+        
+        <GameCondition gameDetailsFromServer={gameDetailsFromServer} />
         {/* <div className='gameDetailsInfo__description'>{testtest}</div> */}
         <div className='gameDetailsInfo__description' dangerouslySetInnerHTML={createMarkup()} />
 

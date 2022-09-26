@@ -40,8 +40,9 @@ function AddBoardGamePage() {
   let createOptions = (passedArray) => {
     let updatedOptions = []
     passedArray.forEach(element => {
+      console.log(element)
       updatedOptions.push({
-        label: element.handle,
+        label: element.name,
         id: element.id
       }
 
@@ -152,7 +153,7 @@ function AddBoardGamePage() {
             id="combo-box-demo"
             
             options={options}
-            renderInput={(params) => <TextField {...params} placeholder="Placeholder"/>}
+            renderInput={(params) => <TextField {...params} placeholder="Search Database"/>}
           />
           {/* <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Condition</InputLabel>
@@ -174,11 +175,11 @@ function AddBoardGamePage() {
           <div className="add-board-game__listOfInputs">
             <input className="add-board-game__bgName" label="bgName" value={bgName} onChange={onbgNameChange} placeholder="Name" />
             <select name="pets" class="add-board-game__bgCondition" value={bgCondition} onChange={handleChange}>
-              <option value="" disabled selected>Condition</option>
-              <option value="Excellent">Excellent</option>
-              <option value="Great">Great</option>
-              <option value="Ok">Ok</option>
-              <option value="Honestly Bad">Honestly Bad</option>
+              <option className='test' value="" disabled selected>Condition</option>
+              <option value="EXCELLENT">Excellent</option>
+              <option value="GREAT">Great</option>
+              <option value="OK">Ok</option>
+              <option value="HONESTLY BAD">Honestly Bad</option>
             </select>
             <input className="add-board-game__bgMinDuration" label="bgMinDuration" value={bgMinDuration} onChange={onbgMinDuration} placeholder="Minimum Duration" />
             <input className="add-board-game__bgMaxDuration" label="bgMaxDuration" value={bgMaxDuration} onChange={onbgMaxDuration} placeholder="Maximum Duration" />

@@ -6,14 +6,14 @@ import './HomePage.scss'
 const API_URL = process.env.REACT_APP_API_URL;
 function HomePage() {
     let [gameCardData, setGameCardData] = useState([])
-    
+
 
     let getAndSetGameData = () => {
         axios.get(`${API_URL}/games`).then((res) => {
-            
+
             setGameCardData(res.data.results)
         })
-        
+
     }
 
     useEffect(() => {
@@ -23,12 +23,17 @@ function HomePage() {
 
     return (
         <>
-            
-            
-            <GameCardList 
-                gameCardData={gameCardData}
-            />
-            
+
+            <div className="homepage">
+                
+                <div className="homepage__content">
+                <div className="homepage__header">Browse Games</div>
+                <GameCardList
+                    gameCardData={gameCardData}
+                />
+                </div>
+            </div>
+
         </>
     )
 }
