@@ -30,11 +30,12 @@ function ProfilePage() {
   //http://localhost:8080/user/aae16546-dacb-497f-af58-1474af620c93
 
   return (<>
-
-    {showModal ? <ReturnModal selectedGame={selectedGame} setShowModal={setShowModal} loadProfileData={loadProfileData} /> : <div></div>}
+{showModal ? <ReturnModal selectedGame={selectedGame} setShowModal={setShowModal} loadProfileData={loadProfileData} /> : <div></div>}
+    
     <div className="profile">
+    
       <div className="profile__container">
-
+    
         <ReservedGameList
           gamesRented={gamesRented}
           setSelectedGame={setSelectedGame}
@@ -44,6 +45,7 @@ function ProfilePage() {
         <PostedGames gamesOwned={gamesOwned} loadProfileData={loadProfileData} />
       </div>
     </div>
+    
   </>
   )
 }

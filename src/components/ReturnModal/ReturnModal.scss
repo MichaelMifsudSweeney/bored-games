@@ -1,3 +1,7 @@
+@use "../../styles/globals";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
 .returnModal {
     // display: none;
     width: 100vw;
@@ -7,10 +11,39 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 100;
 
+    &__reviewInput {
+        @include input-styling;
+        width: 100%;
+        resize: none;
+    }
     &__container {
-        background-color: whitesmoke;
-        width: 50%;
-        padding: 10px;
+        background-color: white;
+        @include flex-column;
+        width: 33%;
+        max-width: 600px;
+        padding: $spacing-4;
+        gap: $spacing-4;
+        border-radius: $spacing-1;
+    }
+
+    &__button-bar {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__confirm-button {
+        @include button-styling;
+    }
+
+    &__cancel-button {
+        @include button-styling;
+        background-color: white;
+        color: $action;
+    }
+
+    &__header {
+        @include page-header;
     }
 }
