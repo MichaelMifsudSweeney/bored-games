@@ -52,13 +52,9 @@
     }
 
     &__reserve-button {
-        background-color: $action;
-        padding: $spacing-3;
-        border: none;
+        @include button-styling;
         width: 100%;
-        border-radius: 6px;
-        @include label-or-button;
-        color: white;
+        
     }
 
     &__gamePhoto {

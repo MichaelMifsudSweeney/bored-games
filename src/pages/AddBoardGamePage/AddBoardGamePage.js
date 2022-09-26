@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import axios from 'axios';
@@ -27,8 +27,12 @@ function AddBoardGamePage() {
   let [gameDataFromServer, setGameDataFromServer] = useState({})
 
   const [options, setOptions] = useState([
-    { label: 'Pulp Fiction', id: 2 },
+    { label: 'Type to search', id: 2 },
   ]);
+
+  useEffect(() => {
+    console.log(bgCondition)
+  }, [bgCondition])
 
   //create the optionsArray
 
@@ -86,18 +90,14 @@ function AddBoardGamePage() {
       navigate(-1)
       return
     })
-    
+
   }
 
   let selectBoardGameHandler = (e) => {
-    // console.log("onSubmit", e.target.innerText)
-    // console.log("onSubmit", typeof (e.target.innerHTML))
     let selectedGameOption = options.find((option) => option.label === e.target.innerHTML)
     if (e.target.innerText !== undefined) {
-      // console.log("this is fired")
       axios.get(`https://api.boardgameatlas.com/api/search?ids=${selectedGameOption.id}&client_id=JLBr5npPhV`)
         .then((res) => {
-          // console.log("returnedData is:", res.data.games[0])
           setGameDataFromServer(res.data.games[0])
           setbgName(res.data.games[0].name)
           setbgDescription(res.data.games[0].description)
@@ -106,10 +106,6 @@ function AddBoardGamePage() {
           setbgMinPlayers(res.data.games[0].min_players)
           setbgMaxPlayers(res.data.games[0].max_players)
           setbgImage(res.data.games[0].image_url)
-      
-          // console.log()
-         
-          
         })
         .catch((err) => {
           console.log(err)
@@ -125,52 +121,64 @@ function AddBoardGamePage() {
   const onbgMaxPlayersChange = (e) => setbgMaxPlayers(e.target.value);
   const onbgImageChange = (e) => setbgImage(e.target.value);
   const onbgCategoryChange = (e) => setbgCategory(e.target.value);
-  
+
 
   return (<>
-    <div className="addBoardGameContainer">
-      <form onSubmit={(e) => submitNewBoardGameHandler(e)}>
-        <div>AddBoardGamePage</div>
-        <Autocomplete
-          onChange={(e) => selectBoardGameHandler(e)}
-          onInputChange={(event, newInputValue) => {
-            // console.log(`https://api.boardgameatlas.com/api/search?name=${newInputValue}&client_id=JLBr5npPhV`)
-            // console.log(event.target.value)
-            onSearchInputChange(newInputValue)
-          }}
-          id="combo-box-demo"
-          options={options}
-          renderInput={(params) => <TextField {...params} label="Board Game" />}
-        />
-        <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label">Condition</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={bgCondition}
-            label="Age"
-            onChange={handleChange}
-          >
-            <MenuItem value="Excellent">Excellent</MenuItem>
-            <MenuItem value="Great">Great</MenuItem>
-            <MenuItem value="Ok">Ok</MenuItem>
-            <MenuItem value="Honestly Bad">Honestly Bad</MenuItem>
-          </Select>
-        </FormControl>
+    <section className='add-board-game'>
+      <div className="add-board-game__container">
+        <form onSubmit={(e) => submitNewBoardGameHandler(e)}>
+          <div>AddBoardGamePage</div>
+          <Autocomplete
+            onChange={(e) => selectBoardGameHandler(e)}
+            onInputChange={(event, newInputValue) => {
+              // console.log(`https://api.boardgameatlas.com/api/search?name=${newInputValue}&client_id=JLBr5npPhV`)
+              // console.log(event.target.value)
+              onSearchInputChange(newInputValue)
+            }}
+            id="combo-box-demo"
+            options={options}
+            renderInput={(params) => <TextField {...params} label="Board Game" />}
+          />
+          {/* <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label">Condition</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={bgCondition}
+              label="Age"
+              onChange={handleChange}
+            >
+              <MenuItem value="Excellent">Excellent</MenuItem>
+              <MenuItem value="Great">Great</MenuItem>
+              <MenuItem value="Ok">Ok</MenuItem>
+              <MenuItem value="Honestly Bad">Honestly Bad</MenuItem>
+            </Select>
+          </FormControl> */}
 
-        <TextField id="outlined-name" label="bgName" value={bgName} onChange={onbgNameChange} />
-        <TextField id="outlined-name" label="bgDescription" multiline value={bgDescription} onChange={onbgDescription} />
-        <TextField id="outlined-name" label="bgMinDuration" value={bgMinDuration} onChange={onbgMinDuration} />
-        <TextField id="outlined-name" label="bgMaxDuration" value={bgMaxDuration} onChange={onbgMaxDuration} />
-        <TextField id="outlined-name" label="bgMinPlayers" value={bgMinPlayers} onChange={onbgMinPlayersChange} />
-        <TextField id="outlined-name" label="bgMaxPlayers" value={bgMaxPlayers} onChange={onbgMaxPlayersChange} />
-        <TextField id="outlined-name" label="bgImage" value={bgImage} onChange={onbgImageChange} />
-        <TextField id="outlined-name" label="bgCategory" value={bgCategory} onChange={onbgCategoryChange} />
-        
-        {/* <input type="text" name="itemSelected" className="item-details__item-name-input" value={inventoryName} placeholder='Item Name' onChange={onNameChange} /> */}
-        <button>Submit!</button>
-      </form>
-    </div>
+
+          <div className="add-board-game__listOfInputs">
+            <input class="add-board-game__bgName" label="bgName" value={bgName} onChange={onbgNameChange} placeholder="Name" />
+            <select name="pets" class="add-board-game__bgCondition" value={bgCondition} onChange={handleChange}>
+              <option value="" disabled selected>Condition</option>
+              <option value="Excellent">Excellent</option>
+              <option value="Great">Great</option>
+              <option value="Ok">Ok</option>
+              <option value="Honestly Bad">Honestly Bad</option>
+            </select>
+            <input class="add-board-game__bgMinDuration" label="bgMinDuration" value={bgMinDuration} onChange={onbgMinDuration} placeholder="Minimum Duration" />
+            <input class="add-board-game__bgMaxDuration" label="bgMaxDuration" value={bgMaxDuration} onChange={onbgMaxDuration} placeholder="Maximum Duration" />
+            <input class="add-board-game__bgMinPlayers" label="bgMinPlayers" value={bgMinPlayers} onChange={onbgMinPlayersChange} placeholder="Minimum Players" />
+            <input class="add-board-game__bgMaxPlayers" label="bgMaxPlayers" value={bgMaxPlayers} onChange={onbgMaxPlayersChange} placeholder="Maximum Players" />
+            {/* <input class="add-board-game__bgImage" label="bgImage" value={bgImage} onChange={onbgImageChange} /> */}
+            {/* <input class="add-board-game__bgCategory" label="bgCategory" value={bgCategory} onChange={onbgCategoryChange} /> */}
+            <textarea class="add-board-game__bgDescription" label="bgDescription" multiline value={bgDescription} onChange={onbgDescription} placeholder="Game Description" />
+          </div>
+          <div className="add-board-game__button-bar">
+            <button className='add-board-game__button'>Submit!</button>
+          </div>
+        </form>
+      </div>
+    </section>
   </>
   )
 }
