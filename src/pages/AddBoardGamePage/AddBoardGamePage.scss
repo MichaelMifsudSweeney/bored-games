@@ -2,6 +2,25 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
 
+// form .MuiFormControl-root{
+//     @include input-styling;
+//     border: none;
+    
+    
+//     width: 100%;
+// }
+
+// .MuiInputBase-root {
+//     color: red;
+//     height: 24px;
+
+// }
+
+// .MuiFormControl-root .MuiOutlinedInput-notchedOutline{
+//     border: 0;
+//     height: 24px;
+// }
+
 .add-board-game {
     width: 100%;
     @include flex-column;
@@ -9,25 +28,38 @@
     &__container {
         max-width: 900px;
     }
+
+    &__bgAutoComplete {
+        @include input-styling
+    }
+
+    &__title {
+        @include page-header;
+    }
     &__listOfInputs {
         display: flex;
         flex-wrap: wrap;
         gap: 10px
     }
     &__bgName {
-        @include input-styling()
+        @include input-styling();
+        flex-grow: 1;
     }
     &__bgMinDuration {
-        @include input-styling()
+        @include input-styling();
+        flex-grow: 1;
     }
     &__bgMaxDuration {
-        @include input-styling()
+        @include input-styling();
+        flex-grow: 1;
     }
     &__bgMinPlayers {
-        @include input-styling()
+        @include input-styling();
+        flex-grow: 1;
     }
     &__bgMaxPlayers {
-        @include input-styling()
+        @include input-styling();
+        flex-grow: 1;
     }
     &__bgDescription {
         @include input-styling();
@@ -37,6 +69,7 @@
     }
     &__bgCondition {
         @include input-styling();
+        flex-grow: 1;
     }
 
     &__button-bar {

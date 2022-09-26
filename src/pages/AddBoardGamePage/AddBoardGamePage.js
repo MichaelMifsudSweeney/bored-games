@@ -9,6 +9,7 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import uuid4 from "uuid4";
 import { useNavigate } from "react-router-dom";
+import styled from '@emotion/styled';
 
 const CURRENT_USER_ID = process.env.REACT_APP_CURRENT_USER_ID;
 const API_URL = process.env.REACT_APP_API_URL;
@@ -123,12 +124,25 @@ function AddBoardGamePage() {
   const onbgCategoryChange = (e) => setbgCategory(e.target.value);
 
 
+  
+
   return (<>
     <section className='add-board-game'>
       <div className="add-board-game__container">
         <form onSubmit={(e) => submitNewBoardGameHandler(e)}>
-          <div>AddBoardGamePage</div>
+          <h2 className='add-board-game__title'>Add a Board Game</h2>
           <Autocomplete
+            sx={{ 
+              width: "100%",
+              borderRadius: "10px",
+              backgroundColor: "rgba(0,0,0, 0.05)",
+              marginBottom: "10px",
+              
+              ".MuiOutlinedInput-notchedOutline": {border: "none", backgroundColor: "grey", height:"24px",}
+
+            
+             }}
+             
             onChange={(e) => selectBoardGameHandler(e)}
             onInputChange={(event, newInputValue) => {
               // console.log(`https://api.boardgameatlas.com/api/search?name=${newInputValue}&client_id=JLBr5npPhV`)
@@ -136,8 +150,9 @@ function AddBoardGamePage() {
               onSearchInputChange(newInputValue)
             }}
             id="combo-box-demo"
+            
             options={options}
-            renderInput={(params) => <TextField {...params} label="Board Game" />}
+            renderInput={(params) => <TextField {...params} placeholder="Placeholder"/>}
           />
           {/* <FormControl fullWidth>
             <InputLabel id="demo-simple-select-label">Condition</InputLabel>
@@ -157,7 +172,7 @@ function AddBoardGamePage() {
 
 
           <div className="add-board-game__listOfInputs">
-            <input class="add-board-game__bgName" label="bgName" value={bgName} onChange={onbgNameChange} placeholder="Name" />
+            <input className="add-board-game__bgName" label="bgName" value={bgName} onChange={onbgNameChange} placeholder="Name" />
             <select name="pets" class="add-board-game__bgCondition" value={bgCondition} onChange={handleChange}>
               <option value="" disabled selected>Condition</option>
               <option value="Excellent">Excellent</option>
@@ -165,10 +180,10 @@ function AddBoardGamePage() {
               <option value="Ok">Ok</option>
               <option value="Honestly Bad">Honestly Bad</option>
             </select>
-            <input class="add-board-game__bgMinDuration" label="bgMinDuration" value={bgMinDuration} onChange={onbgMinDuration} placeholder="Minimum Duration" />
-            <input class="add-board-game__bgMaxDuration" label="bgMaxDuration" value={bgMaxDuration} onChange={onbgMaxDuration} placeholder="Maximum Duration" />
-            <input class="add-board-game__bgMinPlayers" label="bgMinPlayers" value={bgMinPlayers} onChange={onbgMinPlayersChange} placeholder="Minimum Players" />
-            <input class="add-board-game__bgMaxPlayers" label="bgMaxPlayers" value={bgMaxPlayers} onChange={onbgMaxPlayersChange} placeholder="Maximum Players" />
+            <input className="add-board-game__bgMinDuration" label="bgMinDuration" value={bgMinDuration} onChange={onbgMinDuration} placeholder="Minimum Duration" />
+            <input className="add-board-game__bgMaxDuration" label="bgMaxDuration" value={bgMaxDuration} onChange={onbgMaxDuration} placeholder="Maximum Duration" />
+            <input className="add-board-game__bgMinPlayers" label="bgMinPlayers" value={bgMinPlayers} onChange={onbgMinPlayersChange} placeholder="Minimum Players" />
+            <input className="add-board-game__bgMaxPlayers" label="bgMaxPlayers" value={bgMaxPlayers} onChange={onbgMaxPlayersChange} placeholder="Maximum Players" />
             {/* <input class="add-board-game__bgImage" label="bgImage" value={bgImage} onChange={onbgImageChange} /> */}
             {/* <input class="add-board-game__bgCategory" label="bgCategory" value={bgCategory} onChange={onbgCategoryChange} /> */}
             <textarea class="add-board-game__bgDescription" label="bgDescription" multiline value={bgDescription} onChange={onbgDescription} placeholder="Game Description" />
