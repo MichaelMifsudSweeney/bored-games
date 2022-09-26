@@ -1,8 +1,72 @@
-img {
-    width: 50px;
+@use "../../styles/globals";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.ownedGame {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__title {
+        @include subheader;
+        
+    }
+    &__left {
+        display: flex;
+        align-items: center;
+    }
+
+    &__players {
+        @include body-copy;
+    }
+
+    &__return-button {
+        @include label-or-button;
+        background-color:white;
+        border: none;
+        color: $destructive-action;
+    }
+
+    &__duration {
+        @include body-copy;
+    }
+
+    &__gamePhoto {
+        flex-shrink: 0;
+        width: 125px;
+    }
+    &__img-wrapper {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    &__img-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 125px;
+        margin-right: $spacing-3;
+        border-radius: 10px;
+        overflow: hidden;
+    }
 }
 
-.gamePosted {
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-    width: 200px;
+.add-game-cell {
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+    
+    &__img {
+        width: 125px;
+        height: 125px;
+        background-color: rgba(246,246,246);
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__CTA {
+        @include label-or-button;
+        color: $action;
+    }
 }

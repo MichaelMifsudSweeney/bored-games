@@ -1,0 +1,15 @@
+@use "../../styles/globals";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.postedGameList {
+    &__title {
+        @include page-header;
+        padding-bottom: $spacing-4;
+    }
+
+    &__list {
+        @include flex-column;
+        gap: $spacing-4;
+    }
+}

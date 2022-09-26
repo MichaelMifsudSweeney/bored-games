@@ -1,0 +1,51 @@
+@use "../../styles/globals";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.reservedGame {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__title {
+        @include subheader;
+        
+    }
+    &__left {
+        display: flex;
+        align-items: center;
+    }
+
+    &__players {
+        @include body-copy;
+    }
+
+    &__return-button {
+        @include label-or-button;
+        background-color:white;
+        border: none;
+        color: $action;
+    }
+
+    &__duration {
+        @include body-copy;
+    }
+
+    &__gamePhoto {
+        flex-shrink: 0;
+        width: 125px;
+    }
+    &__img-wrapper {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+    &__img-container {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 125px;
+        margin-right: $spacing-3;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+}

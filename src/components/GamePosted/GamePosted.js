@@ -14,11 +14,25 @@ function GamePosted({ gameOwned, loadProfileData }) {
     }
 
     return (<>
-        <div className="gamePosted">
-            <img src={gameOwned.image} alt="" />
-            <p>{gameOwned.gameName}</p>
-            <button onClick={removeHandler}>Remove</button>
+        <div className="ownedGame">
+      <div className="ownedGame__left">
+      <div className="ownedGame__img-wrapper">
+          <div className="ownedGame__img-container">
+            <div className="gameCard__top-fill"></div>
+            <img src={gameOwned.image} alt='' className='ownedGame__gamePhoto' />
+          </div>
         </div>
+        
+        <div className="ownedGame__text">
+          <h3 className='ownedGame__title'>{gameOwned.gameName}</h3>
+          <div className="ownedGame__players">{`${gameOwned.gameMinPlayers}-${gameOwned.gameMaxPlayers} Players`}</div>
+          <div className="ownedGame__duration">{gameOwned.gameDuration} minutes</div>
+        </div>
+
+      </div>
+
+      <button className='ownedGame__return-button' onClick={removeHandler}>REMOVE</button>
+    </div>
     </>
     )
 }

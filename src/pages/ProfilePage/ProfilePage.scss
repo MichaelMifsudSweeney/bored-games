@@ -1,0 +1,14 @@
+@use "../../styles/globals";
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.profile {
+    width: 100%;
+    @include flex-column;
+    align-items: center;
+    &__container {
+        width: 100%;
+        padding: 0 $spacing-4;
+        max-width: 900px;
+    }
+}
