@@ -4,7 +4,12 @@ import GameCommentsList from '../GameCommentsList/GameCommentsList';
 import './GameDetailsInfo.scss'
 
 function GameDetailsInfo({ gameDetailsFromServer }) {
-  console.log("fromGameDetailsInfo,", gameDetailsFromServer)
+  console.log(gameDetailsFromServer.gameDescription)
+  
+  function createMarkup() {
+    return {__html: gameDetailsFromServer.gameDescription};
+  }
+
   const CURRENT_USER_ID = process.env.REACT_APP_CURRENT_USER_ID;
 
   let reserveHandler = () => {
@@ -44,8 +49,8 @@ function GameDetailsInfo({ gameDetailsFromServer }) {
           <div className='gameDetailsInfo__owner'> Posted by: {gameDetailsFromServer.ownerName}</div>
         </div>
         <div>{gameDetailsFromServer.gameCondition}</div>
-        <div className='gameDetailsInfo__description'>{gameDetailsFromServer.gameDescription}</div>
-
+        {/* <div className='gameDetailsInfo__description'>{testtest}</div> */}
+        <div className='gameDetailsInfo__description' dangerouslySetInnerHTML={createMarkup()} />
 
         <div></div>
 

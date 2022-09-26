@@ -6,7 +6,7 @@ function GameCommentsList({gameReviews}) {
   return ( <>
     <div className="gameCommentsList">
     {gameReviews?.map((gameReview) => {
-      return <GameComment gameReview={gameReview}/>
+      return <GameComment gameReview={gameReview} key={gameReview.commentId}/>
     })}
     </div>
     </>
