@@ -13,13 +13,11 @@ function App() {
   const notify = () => toast("Reserved!");
   return (
     <div className="App">
-      {/* //NAV BAR COMPONENT
-      //Filter bar component
-      //Card List Component */}
-      
       <BrowserRouter>
+      
       <Navigation />
         <Routes>
+          
           <Route path="/" element={<Navigate to="/home" />} />
           <Route path="/home" element={<HomePage />} />
           <Route path="/game/:gameId" element={<GameDetails notify={notify}/>} />

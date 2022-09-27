@@ -11,12 +11,13 @@ $desktop-breakpoint: 1280px;
 
 // COLORS
 
-
 $primary: #000000; 
 $secondary: rgba(0, 0, 0, 0.5);
-$action: #0084FF; 
+$action: hsl(209, 100%, 50%); 
+$action-hover: rgb(3, 78, 147); 
 $positive-emphasis:#30D158;
 $destructive-action:rgb(255, 0, 0);
+$destructive-action-hover:rgb(128, 3, 3);
 $positive-bg:rgba(48, 209, 88, 0.1);
 $negative-bg:rgba(255, 0, 0, 0.1);
 $subtle-bg: rgba(0, 0, 0, 0.173);

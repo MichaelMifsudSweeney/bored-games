@@ -33,6 +33,7 @@
         @include flex-column;
         align-items: center;
         gap: $spacing-1;
+        
     }
 
     &__instructions {
@@ -54,6 +55,11 @@
     &__reserve-button {
         @include button-styling;
         width: 100%;
+        transition: background-color 275ms ease;
+        &:hover {
+         background-color: $action-hover;  
+         cursor: pointer; 
+        }
         
     }
 

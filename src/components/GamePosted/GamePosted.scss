@@ -24,6 +24,10 @@
         background-color:white;
         border: none;
         color: $destructive-action;
+        &:hover {
+            color: $destructive-action-hover;  
+            cursor: pointer; 
+           }
     }
 
     &__duration {

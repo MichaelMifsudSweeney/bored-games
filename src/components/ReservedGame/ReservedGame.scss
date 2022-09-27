@@ -24,6 +24,10 @@
         background-color:white;
         border: none;
         color: $action;
+        &:hover {
+            color: $action-hover;  
+            cursor: pointer; 
+           }
     }
 
     &__duration {
