@@ -104,6 +104,11 @@
     &__button {
         @include button-styling;
         width: 20%;
+        transition: all 0.25s;
+        &:hover {
+            background-color: $action-hover;  
+            cursor: pointer; 
+           }
     }
 
 }
