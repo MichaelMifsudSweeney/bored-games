@@ -13,3 +13,39 @@
         gap: $spacing-4;
     }
 }
+
+.add-game-cell {
+    display: flex;
+    align-items: center;
+    gap: $spacing-4;
+    &__img {
+        width: 125px;
+        height: 125px;
+        background-color: rgba(246,246,246);
+        border-radius: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__icon {
+        
+        transition: all .8s ease;
+    }
+
+    &__CTA {
+        @include label-or-button;
+        color: $action;
+        transition: all .8s ease;
+    }
+}
+
+.add-game-cell:hover > .add-game-cell__img > .add-game-cell__icon {
+    
+    transform: rotate(90deg) scale(1.1);
+}
+
+.add-game-cell:hover > .add-game-cell__CTA {
+    
+    color: $action-hover;
+}

@@ -54,23 +54,3 @@
     }
 }
 
-.add-game-cell {
-    display: flex;
-    align-items: center;
-    gap: $spacing-4;
-    
-    &__img {
-        width: 125px;
-        height: 125px;
-        background-color: rgba(246,246,246);
-        border-radius: 12px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    &__CTA {
-        @include label-or-button;
-        color: $action;
-    }
-}

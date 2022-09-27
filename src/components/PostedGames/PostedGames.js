@@ -15,7 +15,7 @@ function PostedGames({ gamesOwned, loadProfileData }) {
       <Link to='/add'>
       <div className="add-game-cell">
         <div className="add-game-cell__img">
-          <img src={logo} alt='' />
+          <img src={logo} alt='' className='add-game-cell__icon'/>
           
         </div>
         <div className="add-game-cell__CTA">
