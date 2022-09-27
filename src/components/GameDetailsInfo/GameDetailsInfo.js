@@ -3,10 +3,10 @@ import React from 'react'
 import GameCommentsList from '../GameCommentsList/GameCommentsList';
 import GameCondition from '../GameCondition/GameCondition';
 import './GameDetailsInfo.scss'
-
-function GameDetailsInfo({ gameDetailsFromServer }) {
-
-  console.log(gameDetailsFromServer.gameReviews)
+import { useNavigate } from 'react-router-dom';
+function GameDetailsInfo({ gameDetailsFromServer, notify }) {
+  const navigate = useNavigate();
+  
   function createMarkup() {
     return { __html: gameDetailsFromServer.gameDescription };
   }
@@ -19,7 +19,9 @@ function GameDetailsInfo({ gameDetailsFromServer }) {
       "currentUser": CURRENT_USER_ID
     }
     axios.post(`${process.env.REACT_APP_API_URL}/games/reserve`, objToSend).then(() => {
-      alert("successfully reserved!")
+      navigate('/home');
+      notify()
+      
       return
     })
 
