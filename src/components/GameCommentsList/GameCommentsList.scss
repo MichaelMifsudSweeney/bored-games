@@ -5,4 +5,8 @@
 .gameCommentsList {
     @include flex-column;
     gap: $spacing-3;
+    &__title {
+        margin-top: $spacing-4;
+        @include subheader;
+    }
 }

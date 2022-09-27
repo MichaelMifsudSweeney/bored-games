@@ -5,10 +5,10 @@ import GameCondition from '../GameCondition/GameCondition';
 import './GameDetailsInfo.scss'
 
 function GameDetailsInfo({ gameDetailsFromServer }) {
-  console.log(gameDetailsFromServer.gameDescription)
-  
+
+  console.log(gameDetailsFromServer.gameReviews)
   function createMarkup() {
-    return {__html: gameDetailsFromServer.gameDescription};
+    return { __html: gameDetailsFromServer.gameDescription };
   }
 
   const CURRENT_USER_ID = process.env.REACT_APP_CURRENT_USER_ID;
@@ -49,14 +49,13 @@ function GameDetailsInfo({ gameDetailsFromServer }) {
           <div className='gameDetailsInfo__players-and-playtime'>{gameDetailsFromServer.gameMinPlayers}-{gameDetailsFromServer.gameMaxPlayers} players • {gameDetailsFromServer.gameDuration} minutes</div>
           <div className='gameDetailsInfo__owner'> Posted by: {gameDetailsFromServer.ownerName}</div>
         </div>
-        
+
         <GameCondition gameDetailsFromServer={gameDetailsFromServer} />
         {/* <div className='gameDetailsInfo__description'>{testtest}</div> */}
         <div className='gameDetailsInfo__description' dangerouslySetInnerHTML={createMarkup()} />
 
-        <div></div>
+        {gameDetailsFromServer.gameReviews !== undefined && gameDetailsFromServer.gameReviews.length !== 0 &&<GameCommentsList gameReviews={gameDetailsFromServer.gameReviews} /> }
 
-        <GameCommentsList gameReviews={gameDetailsFromServer.gameReviews} />
       </div>
 
 
