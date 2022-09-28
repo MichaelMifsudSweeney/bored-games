@@ -16,6 +16,7 @@ const API_URL = process.env.REACT_APP_API_URL;
 function AddBoardGamePage() {
   let navigate = useNavigate();
   let [bgName, setbgName] = useState("")
+  let [submitHasBeenClicked, setSubmitHasBeenClicked] = useState(false)
   let [bgDescription, setbgDescription] = useState("")
   let [bgMinDuration, setbgMinDuration] = useState("")
   let [bgMaxDuration, setbgMaxDuration] = useState("")
@@ -32,7 +33,7 @@ function AddBoardGamePage() {
   ]);
 
   useEffect(() => {
-    console.log(bgCondition)
+    
   }, [bgCondition])
 
   //create the optionsArray
@@ -40,7 +41,7 @@ function AddBoardGamePage() {
   let createOptions = (passedArray) => {
     let updatedOptions = []
     passedArray.forEach(element => {
-      console.log(element)
+      
       updatedOptions.push({
         label: element.name,
         id: element.id
@@ -64,15 +65,29 @@ function AddBoardGamePage() {
     //with the results update the options
 
   }
-
+  
   const handleChange = (e) => {
+    
     setbgCondition(e.target.value);
   };
-
-
+  
+  
   let submitNewBoardGameHandler = (e) => {
     e.preventDefault()
-    // console.log("submitFiring")
+    //this is where the validation would come into play
+    //need to check all the fields states, 
+        //if there is zero characters in one, 
+
+        
+    setSubmitHasBeenClicked(true)
+    console.log(bgName.length === 0, bgDescription.length === 0, bgMinDuration.toString().length  === 0, bgMaxDuration.toString().length  === 0, bgMaxPlayers.toString().length  === 0, bgMinPlayers.toString().length === 0, bgCondition.length  === 0)
+    if(bgName.length === 0 || bgDescription.length === 0 || bgMinDuration.toString().length  === 0 || bgMaxDuration.toString().length  === 0 || bgMaxPlayers.toString().length  === 0 || bgMinPlayers.toString().length === 0 || bgCondition.length  === 0 ) {
+      console.log(bgName,bgDescription,bgMinDuration.toString(),bgMaxDuration,bgMaxPlayers,bgMinPlayers,bgCondition,bgCategory)
+      return
+    }
+    
+    
+    
     let newGame = {
       "gameId": uuid4(),
       "gameName": bgName,
@@ -133,6 +148,7 @@ function AddBoardGamePage() {
         <form onSubmit={(e) => submitNewBoardGameHandler(e)}>
           <h2 className='add-board-game__title'>Add a Board Game</h2>
           <Autocomplete
+          
             sx={{ 
               width: "100%",
               borderRadius: "10px",
@@ -146,8 +162,6 @@ function AddBoardGamePage() {
              
             onChange={(e) => selectBoardGameHandler(e)}
             onInputChange={(event, newInputValue) => {
-              // console.log(`https://api.boardgameatlas.com/api/search?name=${newInputValue}&client_id=JLBr5npPhV`)
-              // console.log(event.target.value)
               onSearchInputChange(newInputValue)
             }}
             id="combo-box-demo"
@@ -155,39 +169,23 @@ function AddBoardGamePage() {
             options={options}
             renderInput={(params) => <TextField {...params} placeholder="Search Database"/>}
           />
-          {/* <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Condition</InputLabel>
-            <Select
-              labelId="demo-simple-select-label"
-              id="demo-simple-select"
-              value={bgCondition}
-              label="Age"
-              onChange={handleChange}
-            >
-              <MenuItem value="Excellent">Excellent</MenuItem>
-              <MenuItem value="Great">Great</MenuItem>
-              <MenuItem value="Ok">Ok</MenuItem>
-              <MenuItem value="Honestly Bad">Honestly Bad</MenuItem>
-            </Select>
-          </FormControl> */}
+          
 
 
           <div className="add-board-game__listOfInputs">
-            <input className="add-board-game__bgName" label="bgName" value={bgName} onChange={onbgNameChange} placeholder="Name" />
-            <select name="pets" class="add-board-game__bgCondition" value={bgCondition} onChange={handleChange}>
-              <option className='test' value="" disabled selected>Condition</option>
+            <input className={`add-board-game__bgName ${bgName.length === 0 && !submitHasBeenClicked === false ? "error" : ""}`} label="bgName" value={bgName} onChange={onbgNameChange} placeholder="Name" />
+            <select name="pets" className={`add-board-game__bgCondition ${bgCondition.length === 0 && !submitHasBeenClicked === false ? "error" : ""}`} value={bgCondition} onChange={handleChange}>
+              <option className='test' value="" disabled >Condition</option>
               <option value="EXCELLENT">Excellent</option>
               <option value="GREAT">Great</option>
               <option value="OK">Ok</option>
               <option value="HONESTLY BAD">Honestly Bad</option>
             </select>
-            <input className="add-board-game__bgMinDuration" label="bgMinDuration" value={bgMinDuration} onChange={onbgMinDuration} placeholder="Minimum Duration" />
-            <input className="add-board-game__bgMaxDuration" label="bgMaxDuration" value={bgMaxDuration} onChange={onbgMaxDuration} placeholder="Maximum Duration" />
-            <input className="add-board-game__bgMinPlayers" label="bgMinPlayers" value={bgMinPlayers} onChange={onbgMinPlayersChange} placeholder="Minimum Players" />
-            <input className="add-board-game__bgMaxPlayers" label="bgMaxPlayers" value={bgMaxPlayers} onChange={onbgMaxPlayersChange} placeholder="Maximum Players" />
-            {/* <input class="add-board-game__bgImage" label="bgImage" value={bgImage} onChange={onbgImageChange} /> */}
-            {/* <input class="add-board-game__bgCategory" label="bgCategory" value={bgCategory} onChange={onbgCategoryChange} /> */}
-            <textarea class="add-board-game__bgDescription" label="bgDescription" multiline value={bgDescription} onChange={onbgDescription} placeholder="Game Description" />
+            <input  className={`add-board-game__bgMinDuration ${bgMinDuration.length === 0 && !submitHasBeenClicked === false ? "error" : ""}`} label="bgMinDuration" value={bgMinDuration} onChange={onbgMinDuration} placeholder="Minimum Duration" />
+            <input className={`add-board-game__bgMaxDuration ${bgMaxDuration.length === 0 && !submitHasBeenClicked === false ? "error" : ""}`} label="bgMaxDuration" value={bgMaxDuration} onChange={onbgMaxDuration} placeholder="Maximum Duration" />
+            <input className={`add-board-game__bgMinPlayers ${bgMinPlayers.length === 0 && !submitHasBeenClicked === false ? "error" : ""}`} label="bgMinPlayers" value={bgMinPlayers} onChange={onbgMinPlayersChange} placeholder="Minimum Players" />
+            <input className={`add-board-game__bgMaxPlayers ${bgMaxPlayers.length === 0 && !submitHasBeenClicked === false ? "error" : ""}`}  label="bgMaxPlayers" value={bgMaxPlayers} onChange={onbgMaxPlayersChange} placeholder="Maximum Players" />
+            <textarea  className={`add-board-game__bgDescription ${bgDescription.length === 0 && !submitHasBeenClicked === false ? "error" : ""}`} label="bgDescription" value={bgDescription} onChange={onbgDescription} placeholder="Game Description" />
           </div>
           <div className="add-board-game__button-bar">
             <button className='add-board-game__button'>Submit!</button>
