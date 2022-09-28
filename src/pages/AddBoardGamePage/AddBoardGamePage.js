@@ -60,7 +60,6 @@ function AddBoardGamePage() {
     setSubmitHasBeenClicked(true)
 
     if (bgName.length === 0 || bgDescription.length === 0 || bgMinDuration.toString().length === 0 || bgMaxDuration.toString().length === 0 || bgMaxPlayers.toString().length === 0 || bgMinPlayers.toString().length === 0 || bgCondition.length === 0) {
-      console.log(bgName, bgDescription, bgMinDuration.toString(), bgMaxDuration, bgMaxPlayers, bgMinPlayers, bgCondition, bgCategory)
       return
     }
 
