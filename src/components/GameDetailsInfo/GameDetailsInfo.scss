@@ -8,18 +8,18 @@
     width: 100%;
     padding: $spacing-4 $spacing-4;
     gap: $spacing-4;
+
     @include tablet {
         flex-direction: row;
         align-items: flex-start;
-        
-        
     }
+
     &__left {
         @include flex-column;
         width: 100%;
         flex-shrink: 0;
         gap: $spacing-4;
-        
+
         @include tablet {
             max-width: 50%;
             padding-right: $spacing-4;
@@ -33,7 +33,6 @@
         @include flex-column;
         align-items: center;
         gap: $spacing-1;
-        
     }
 
     &__instructions {
@@ -56,11 +55,12 @@
         @include button-styling;
         width: 100%;
         transition: background-color 275ms ease;
+
         &:hover {
-         background-color: $action-hover;  
-         cursor: pointer; 
+            background-color: $action-hover;
+            cursor: pointer;
         }
-        
+
     }
 
     &__gamePhoto {
@@ -93,8 +93,6 @@
     }
 
     &__title {
-        
-        
         margin: 0;
     }
 }

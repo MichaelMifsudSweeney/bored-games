@@ -1,16 +1,5 @@
-// MIXINS
-
-
-
-// IMPORTS
-
 @use './variables' as *;
 @use './typography' as *;
-
-
-
-
-
 
 // SCREENSIZING MIXINS
 
@@ -26,8 +15,6 @@
     }
 }
 
-
-
 //TYPOGRAPHY 
 
 @mixin page-header() {
@@ -42,14 +29,6 @@
     }
 }
 
-// @mixin section-header() {
-//     font-family: "SFPro";
-//     font-size: .75rem;
-//     line-height: 1.25rem;
-//     font-weight: bold;
-// }
-
-//used for home page item header
 @mixin subheader() {
     font-family: "SFPro";
     font-size: 21px;
@@ -63,16 +42,12 @@
     }
 }
 
-//used for home page item description, game details description
 @mixin body-copy() {
     font-family: "SFPro";
     font-size: 1.125rem;
     line-height: 1.5rem;
     font-weight: 400;
-
-    @include tablet {
-        
-    }
+    @include tablet {}
 }
 
 @mixin label-or-button() {
@@ -108,8 +83,6 @@
     font-size: 20px;
     line-height: 1.25rem;
 }
-
-
 
 //UTILITY 
 

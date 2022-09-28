@@ -2,28 +2,6 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
 
-// form .MuiFormControl-root{
-//     @include input-styling;
-//     border: none;
-
-
-//     width: 100%;
-// }
-
-
-
-
-// .MuiInputBase-root {
-//     color: red;
-//     height: 24px;
-
-// }
-
-// .MuiFormControl-root .MuiOutlinedInput-notchedOutline{
-//     border: 0;
-//     height: 24px;
-// }
-
 .add-board-game {
     width: 100%;
     @include flex-column;
@@ -86,7 +64,7 @@
         background-repeat: no-repeat;
         background-position: right 10px center;
         background-size: 20px 20px;
-        
+
     }
 
     select {
@@ -105,14 +83,14 @@
         @include button-styling;
         width: 20%;
         transition: all 0.25s;
-        &:hover {
-            background-color: $action-hover;  
-            cursor: pointer; 
-           }
-    }
 
+        &:hover {
+            background-color: $action-hover;
+            cursor: pointer;
+        }
+    }
 }
 
 .error {
-    border: 2px solid red; 
+    border: 2px solid red;
 }

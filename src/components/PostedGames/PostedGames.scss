@@ -19,10 +19,11 @@
     align-items: center;
     gap: $spacing-4;
     margin-bottom: $spacing-4;
+
     &__img {
         width: 125px;
         height: 125px;
-        background-color: rgba(246,246,246);
+        background-color: rgba(246, 246, 246);
         border-radius: 12px;
         display: flex;
         justify-content: center;
@@ -30,7 +31,6 @@
     }
 
     &__icon {
-        
         transition: all .15s ease;
     }
 
@@ -41,12 +41,10 @@
     }
 }
 
-.add-game-cell:hover > .add-game-cell__img > .add-game-cell__icon {
-    
-    transform:  scale(1.2);
+.add-game-cell:hover>.add-game-cell__img>.add-game-cell__icon {
+    transform: scale(1.2);
 }
 
-.add-game-cell:hover > .add-game-cell__CTA {
-    
+.add-game-cell:hover>.add-game-cell__CTA {
     color: $action-hover;
 }

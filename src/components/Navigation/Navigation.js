@@ -8,24 +8,21 @@ function Navigation() {
     <>
       <section className='navBar'>
         <div className="navBar__container">
-        <div className="navBar__title">
-        <NavLink to={`home`} >
-          Bored Games
-          </NavLink>
-        </div>
-        <div className="navBar__links">
-          <NavLink to={`profile/${CURRENT_USER_ID}`} className='navBar__link'>
-            Profile
-          </NavLink>
-          <div className="navBar__link">
-            Sign Out
+          <div className="navBar__title">
+            <NavLink to={`home`} >
+              Bored Games
+            </NavLink>
+          </div>
+          <div className="navBar__links">
+            <NavLink to={`profile/${CURRENT_USER_ID}`} className='navBar__link'>
+              Profile
+            </NavLink>
+            <div className="navBar__link">
+              Sign Out
+            </div>
           </div>
         </div>
-        </div>
-
-
       </section>
-
     </>
 
   )

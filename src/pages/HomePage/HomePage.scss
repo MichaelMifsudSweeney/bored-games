@@ -6,10 +6,12 @@
     width: 100%;
     @include flex-column;
     align-items: center;
+
     &__content {
         width: 100%;
         max-width: 900px;
-    } 
+    }
+
     &__header {
         @include page-header;
     }

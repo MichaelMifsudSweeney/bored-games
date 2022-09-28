@@ -1,6 +1,7 @@
 import React from 'react'
 import ReservedGame from '../ReservedGame/ReservedGame'
 import './ReservedGameList.scss'
+
 function ReservedGameList({ gamesRented, setSelectedGame, setShowModal }) {
     return (
         <>

@@ -3,16 +3,10 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import axios from 'axios';
 import './AddBoardGamePage.scss'
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
 import uuid4 from "uuid4";
 import { useNavigate } from "react-router-dom";
-import styled from '@emotion/styled';
-
 const CURRENT_USER_ID = process.env.REACT_APP_CURRENT_USER_ID;
-const API_URL = process.env.REACT_APP_API_URL;
+
 function AddBoardGamePage() {
   let navigate = useNavigate();
   let [bgName, setbgName] = useState("")
@@ -25,7 +19,6 @@ function AddBoardGamePage() {
   let [bgImage, setbgImage] = useState("")
   let [bgCategory, setbgCategory] = useState("")
   let [bgCondition, setbgCondition] = useState("")
-
   let [gameDataFromServer, setGameDataFromServer] = useState({})
 
   const [options, setOptions] = useState([
@@ -33,61 +26,43 @@ function AddBoardGamePage() {
   ]);
 
   useEffect(() => {
-    
   }, [bgCondition])
 
-  //create the optionsArray
-
+  //function to updateOptions in the autocomplete
   let createOptions = (passedArray) => {
     let updatedOptions = []
     passedArray.forEach(element => {
-      
+
       updatedOptions.push({
         label: element.name,
         id: element.id
       }
-
       )
     });
-
-    // console.log(updatedOptions)
     return updatedOptions
   }
 
+  //function to query the database and set the options
   let onSearchInputChange = (input) => {
-    //query the api
     axios.get(`https://api.boardgameatlas.com/api/search?name=${input}&client_id=JLBr5npPhV`).then((res) => {
-
-
       setOptions(createOptions(res.data.games))
-
     })
-    //with the results update the options
-
   }
-  
+
+  //function to set the board game condition state
   const handleChange = (e) => {
-    
     setbgCondition(e.target.value);
   };
-  
-  
+
+  //function that validates all fields have been filled and then sends a game object to the server
   let submitNewBoardGameHandler = (e) => {
     e.preventDefault()
-    //this is where the validation would come into play
-    //need to check all the fields states, 
-        //if there is zero characters in one, 
-
-        
     setSubmitHasBeenClicked(true)
-    console.log(bgName.length === 0, bgDescription.length === 0, bgMinDuration.toString().length  === 0, bgMaxDuration.toString().length  === 0, bgMaxPlayers.toString().length  === 0, bgMinPlayers.toString().length === 0, bgCondition.length  === 0)
-    if(bgName.length === 0 || bgDescription.length === 0 || bgMinDuration.toString().length  === 0 || bgMaxDuration.toString().length  === 0 || bgMaxPlayers.toString().length  === 0 || bgMinPlayers.toString().length === 0 || bgCondition.length  === 0 ) {
-      console.log(bgName,bgDescription,bgMinDuration.toString(),bgMaxDuration,bgMaxPlayers,bgMinPlayers,bgCondition,bgCategory)
+
+    if (bgName.length === 0 || bgDescription.length === 0 || bgMinDuration.toString().length === 0 || bgMaxDuration.toString().length === 0 || bgMaxPlayers.toString().length === 0 || bgMinPlayers.toString().length === 0 || bgCondition.length === 0) {
       return
     }
-    
-    
-    
+
     let newGame = {
       "gameId": uuid4(),
       "gameName": bgName,
@@ -103,13 +78,14 @@ function AddBoardGamePage() {
       "gameCondition": bgCondition,
       "gameReviews": []
     }
+
     axios.post(`${process.env.REACT_APP_API_URL}/games/new`, newGame).then(() => {
       navigate(-1)
       return
     })
-
   }
 
+  //function to set all the fields after a board game has been selected
   let selectBoardGameHandler = (e) => {
     let selectedGameOption = options.find((option) => option.label === e.target.innerHTML)
     if (e.target.innerText !== undefined) {
@@ -136,64 +112,53 @@ function AddBoardGamePage() {
   const onbgMaxDuration = (e) => setbgMaxDuration(e.target.value);
   const onbgMinPlayersChange = (e) => setbgMinPlayers(e.target.value);
   const onbgMaxPlayersChange = (e) => setbgMaxPlayers(e.target.value);
-  const onbgImageChange = (e) => setbgImage(e.target.value);
-  const onbgCategoryChange = (e) => setbgCategory(e.target.value);
 
-
-  
-
-  return (<>
-    <section className='add-board-game'>
-      <div className="add-board-game__container">
-        <form onSubmit={(e) => submitNewBoardGameHandler(e)}>
-          <h2 className='add-board-game__title'>Add a Board Game</h2>
-          <Autocomplete
-          
-            sx={{ 
-              width: "100%",
-              borderRadius: "10px",
-              backgroundColor: "rgba(0,0,0, 0.05)",
-              marginBottom: "10px",
-              
-              ".MuiOutlinedInput-notchedOutline": {border: "none", backgroundColor: "grey", height:"24px",}
-
+  return (
+    <>
+      <section className='add-board-game'>
+        <div className="add-board-game__container">
+          <form onSubmit={(e) => submitNewBoardGameHandler(e)}>
+            <h2 className='add-board-game__title'>Add a Board Game</h2>
             
-             }}
-             
-            onChange={(e) => selectBoardGameHandler(e)}
-            onInputChange={(event, newInputValue) => {
-              onSearchInputChange(newInputValue)
-            }}
-            id="combo-box-demo"
-            
-            options={options}
-            renderInput={(params) => <TextField {...params} placeholder="Search Database"/>}
-          />
-          
+            <Autocomplete
+              sx={{
+                width: "100%",
+                borderRadius: "10px",
+                backgroundColor: "rgba(0,0,0, 0.05)",
+                marginBottom: "10px",
+                ".MuiOutlinedInput-notchedOutline": { border: "none", backgroundColor: "grey", height: "24px", }
+              }}
+              onChange={(e) => selectBoardGameHandler(e)}
+              onInputChange={(event, newInputValue) => {
+                onSearchInputChange(newInputValue)
+              }}
+              id="combo-box-demo"
+              options={options}
+              renderInput={(params) => <TextField {...params} placeholder="Search Database" />}
+            />
 
-
-          <div className="add-board-game__listOfInputs">
-            <input className={`add-board-game__bgName ${bgName.length === 0 && !submitHasBeenClicked === false ? "error" : ""}`} label="bgName" value={bgName} onChange={onbgNameChange} placeholder="Name" />
-            <select name="pets" className={`add-board-game__bgCondition ${bgCondition.length === 0 && !submitHasBeenClicked === false ? "error" : ""}`} value={bgCondition} onChange={handleChange}>
-              <option className='test' value="" disabled >Condition</option>
-              <option value="EXCELLENT">Excellent</option>
-              <option value="GREAT">Great</option>
-              <option value="OK">Ok</option>
-              <option value="HONESTLY BAD">Honestly Bad</option>
-            </select>
-            <input  className={`add-board-game__bgMinDuration ${bgMinDuration.length === 0 && !submitHasBeenClicked === false ? "error" : ""}`} label="bgMinDuration" value={bgMinDuration} onChange={onbgMinDuration} placeholder="Minimum Duration" />
-            <input className={`add-board-game__bgMaxDuration ${bgMaxDuration.length === 0 && !submitHasBeenClicked === false ? "error" : ""}`} label="bgMaxDuration" value={bgMaxDuration} onChange={onbgMaxDuration} placeholder="Maximum Duration" />
-            <input className={`add-board-game__bgMinPlayers ${bgMinPlayers.length === 0 && !submitHasBeenClicked === false ? "error" : ""}`} label="bgMinPlayers" value={bgMinPlayers} onChange={onbgMinPlayersChange} placeholder="Minimum Players" />
-            <input className={`add-board-game__bgMaxPlayers ${bgMaxPlayers.length === 0 && !submitHasBeenClicked === false ? "error" : ""}`}  label="bgMaxPlayers" value={bgMaxPlayers} onChange={onbgMaxPlayersChange} placeholder="Maximum Players" />
-            <textarea  className={`add-board-game__bgDescription ${bgDescription.length === 0 && !submitHasBeenClicked === false ? "error" : ""}`} label="bgDescription" value={bgDescription} onChange={onbgDescription} placeholder="Game Description" />
-          </div>
-          <div className="add-board-game__button-bar">
-            <button className='add-board-game__button'>Submit!</button>
-          </div>
-        </form>
-      </div>
-    </section>
-  </>
+            <div className="add-board-game__listOfInputs">
+              <input className={`add-board-game__bgName ${bgName.length === 0 && !submitHasBeenClicked === false ? "error" : ""}`} label="bgName" value={bgName} onChange={onbgNameChange} placeholder="Name" />
+              <select name="pets" className={`add-board-game__bgCondition ${bgCondition.length === 0 && !submitHasBeenClicked === false ? "error" : ""}`} value={bgCondition} onChange={handleChange}>
+                <option className='test' value="" disabled >Condition</option>
+                <option value="EXCELLENT">Excellent</option>
+                <option value="GREAT">Great</option>
+                <option value="OK">Ok</option>
+                <option value="HONESTLY BAD">Honestly Bad</option>
+              </select>
+              <input className={`add-board-game__bgMinDuration ${bgMinDuration.length === 0 && !submitHasBeenClicked === false ? "error" : ""}`} label="bgMinDuration" value={bgMinDuration} onChange={onbgMinDuration} placeholder="Minimum Duration" />
+              <input className={`add-board-game__bgMaxDuration ${bgMaxDuration.length === 0 && !submitHasBeenClicked === false ? "error" : ""}`} label="bgMaxDuration" value={bgMaxDuration} onChange={onbgMaxDuration} placeholder="Maximum Duration" />
+              <input className={`add-board-game__bgMinPlayers ${bgMinPlayers.length === 0 && !submitHasBeenClicked === false ? "error" : ""}`} label="bgMinPlayers" value={bgMinPlayers} onChange={onbgMinPlayersChange} placeholder="Minimum Players" />
+              <input className={`add-board-game__bgMaxPlayers ${bgMaxPlayers.length === 0 && !submitHasBeenClicked === false ? "error" : ""}`} label="bgMaxPlayers" value={bgMaxPlayers} onChange={onbgMaxPlayersChange} placeholder="Maximum Players" />
+              <textarea className={`add-board-game__bgDescription ${bgDescription.length === 0 && !submitHasBeenClicked === false ? "error" : ""}`} label="bgDescription" value={bgDescription} onChange={onbgDescription} placeholder="Game Description" />
+            </div>
+            <div className="add-board-game__button-bar">
+              <button className='add-board-game__button'>Submit!</button>
+            </div>
+          </form>
+        </div>
+      </section>
+    </>
   )
 }
 
