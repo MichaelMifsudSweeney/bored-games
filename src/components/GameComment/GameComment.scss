@@ -4,6 +4,7 @@
 
 .gameComment {
     width: 100%;
+
     &__name {
         @include caption-bold;
         color: $secondary;

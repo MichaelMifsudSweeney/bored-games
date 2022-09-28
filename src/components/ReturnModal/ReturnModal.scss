@@ -3,7 +3,6 @@
 @use "../../styles/mixins" as *;
 
 .returnModal {
-    // display: none;
     width: 100%;
     height: 100%;
     position: absolute;
@@ -19,18 +18,21 @@
         width: 100%;
         resize: none;
     }
+
     &__container {
         width: 90%;
         background-color: white;
         @include flex-column;
-        
+
         max-width: 600px;
         padding: $spacing-4;
         gap: $spacing-4;
         border-radius: $spacing-1;
+
         @include tablet {
             width: 50%;
         }
+
         @include desktop {
             width: 35%;
         }
@@ -43,20 +45,22 @@
 
     &__confirm-button {
         @include button-styling;
+
         &:hover {
-            background-color: $action-hover;  
-            cursor: pointer; 
-           }
+            background-color: $action-hover;
+            cursor: pointer;
+        }
     }
 
     &__cancel-button {
         @include button-styling;
         background-color: white;
         color: $action;
+
         &:hover {
-            color: $action-hover;  
-            cursor: pointer; 
-           }
+            color: $action-hover;
+            cursor: pointer;
+        }
     }
 
     &__header {

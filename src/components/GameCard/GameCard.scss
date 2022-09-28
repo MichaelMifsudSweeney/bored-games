@@ -1,5 +1,3 @@
-// IMPORTS
-
 @use "../../styles/globals";
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
@@ -11,19 +9,21 @@
     border-radius: 20px 20px 0 0;
     overflow: hidden;
     transition: transform 250ms;
+
     &:hover {
         transform: translateY(-10px);
-      }
+    }
+
     @include tablet {
         width: 45%;
-    } 
+    }
+
     @include desktop {
         width: 31%;
         max-width: 400px;
     }
-    
+
     &__img-container {
-        
         height: 200px;
         width: 100%;
         @include flex-column;
@@ -32,12 +32,13 @@
         position: relative;
 
     }
+
     &__img {
         height: 90%;
         width: fit-content;
         padding: 10px;
-
     }
+
     &__gameName {
         @include subheader;
     }
@@ -54,7 +55,7 @@
         align-items: center;
     }
 
-    
+
 
     &__top-fill {
         width: 100%;

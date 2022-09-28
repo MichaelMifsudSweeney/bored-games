@@ -6,6 +6,7 @@
     width: 100%;
     @include flex-column;
     align-items: center;
+
     &__container {
         width: 100%;
         padding: 0 $spacing-4;
