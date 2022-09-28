@@ -39,6 +39,7 @@
         width: 125px;
     }
     &__img-wrapper {
+        flex-shrink: 0;
         border-radius: 10px;
         overflow: hidden;
     }

@@ -31,7 +31,7 @@ function ReturnModal({ selectedGame, setShowModal, loadProfileData }) {
             <div className="returnModal__container">
                 <h3 className='returnModal__header'>{`Please submit a review of ${selectedGame.gameName} before returning it`}</h3>
                 <textarea
-                    class="returnModal__reviewInput"
+                    className="returnModal__reviewInput"
                     label="Multiline Placeholder"
                     value={commentText}
                     placeholder="Submit a review"

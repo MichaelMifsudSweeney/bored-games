@@ -20,13 +20,20 @@
         resize: none;
     }
     &__container {
+        width: 90%;
         background-color: white;
         @include flex-column;
-        width: 33%;
+        
         max-width: 600px;
         padding: $spacing-4;
         gap: $spacing-4;
         border-radius: $spacing-1;
+        @include tablet {
+            width: 50%;
+        }
+        @include desktop {
+            width: 35%;
+        }
     }
 
     &__button-bar {

@@ -66,13 +66,12 @@
 //used for home page item description, game details description
 @mixin body-copy() {
     font-family: "SFPro";
-    font-size: 13px;
-    line-height: 18px;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
     font-weight: 400;
 
     @include tablet {
-        font-size: 1.125rem;
-        line-height: 1.5rem;
+        
     }
 }
 

@@ -41,6 +41,7 @@
     &__img-wrapper {
         border-radius: 10px;
         overflow: hidden;
+        flex-shrink: 0;
     }
     &__img-container {
         position: relative;

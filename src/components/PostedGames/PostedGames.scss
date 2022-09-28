@@ -18,6 +18,7 @@
     display: flex;
     align-items: center;
     gap: $spacing-4;
+    margin-bottom: $spacing-4;
     &__img {
         width: 125px;
         height: 125px;
@@ -30,19 +31,19 @@
 
     &__icon {
         
-        transition: all .8s ease;
+        transition: all .15s ease;
     }
 
     &__CTA {
         @include label-or-button;
         color: $action;
-        transition: all .8s ease;
+        transition: all .1s ease;
     }
 }
 
 .add-game-cell:hover > .add-game-cell__img > .add-game-cell__icon {
     
-    transform: rotate(90deg) scale(1.1);
+    transform:  scale(1.2);
 }
 
 .add-game-cell:hover > .add-game-cell__CTA {

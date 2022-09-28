@@ -8,11 +8,7 @@ function PostedGames({ gamesOwned, loadProfileData }) {
   return (<>
   <div className="postedGameList">
     <h2 className='postedGameList__title'>Posted</h2>
-    <div className="postedGameList__list">
-      {gamesOwned.map(gameOwned => {
-        return <GamePosted gameOwned={gameOwned} loadProfileData={loadProfileData} key={gameOwned.gameId} />
-      })}
-      <Link to='/add'>
+    <Link to='/add'>
       <div className="add-game-cell">
         <div className="add-game-cell__img">
           <img src={logo} alt='' className='add-game-cell__icon'/>
@@ -23,6 +19,11 @@ function PostedGames({ gamesOwned, loadProfileData }) {
         </div>
       </div>
       </Link>
+    <div className="postedGameList__list">
+      {gamesOwned.map(gameOwned => {
+        return <GamePosted gameOwned={gameOwned} loadProfileData={loadProfileData} key={gameOwned.gameId} />
+      })}
+      
     </div>
     </div>
   </>

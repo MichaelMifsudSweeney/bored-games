@@ -10,7 +10,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-  const notify = () => toast("Reserved!");
+  const notify = () => toast("Game Reserved!");
   return (
     <div className="App">
       <BrowserRouter>

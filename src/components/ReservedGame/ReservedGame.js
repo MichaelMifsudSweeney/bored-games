@@ -1,7 +1,7 @@
 import React from 'react'
 import './ReservedGame.scss'
 function ReservedGame({ gameRented, setSelectedGame, setShowModal }) {
-  console.log(gameRented)
+  
   let returnGameHandler = () => {
     //pass the currentGameToThe Modal
     setSelectedGame(gameRented)
