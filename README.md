@@ -1,74 +1,78 @@
-<<<<<<< HEAD
-# bored-games
-=======
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Bored Games Web App
 
-## Available Scripts
+Bored Games is a project that creates a community of board game enthusiasts in your local neighborhood. Apps like Turo and Airbnb exist, so why not an app where you can rent board games from your neighbors?
 
-In the project directory, you can run:
+It is split into two parts. This is the front end, and the backend is located at [here.](https://github.com/MichaelMifsudSweeney/BoredGames-API)
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**Client:** React, SCSS, MaterialUI, Board Game Atlas
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Server:** Node, Express
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Deployment
 
-### `npm run build`
+#### To Deploy the Back End:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+  git clone https://github.com/MichaelMifsudSweeney/BoredGames-API.git
+```
+(or download it from Code > Download Zip)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+You'll need to create a .env file with variables for PORT and BACKEND_URL (There's also a .env_sample, you can just edit the filename to .env)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+You'll need to install node modules with:
+```bash
+  npm i
+```
 
-### `npm run eject`
+When you're ready to go you can hit:
+```bash
+  node index.js
+```
+ or if you have nodemon:
+ ```bash
+  npx nodemon
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+#### To Deploy the Front End:
+```bash
+  git clone https://github.com/MichaelMifsudSweeney/bored-games.git
+```
+(or download it from Code > Download Zip)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+You'll need to create a .env file with variables for REACT_APP_API_URL and REACT_APP_CURRENT_USER_ID (There's also a .env_sample, you can just edit the filename to .env)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+You'll need to install node modules with:
+```bash
+  npm i
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+When you're ready to go you can hit:
+```bash
+  npm start
+```
+## Features
 
-## Learn More
+- Browse through posted board games, see number of players, and playtime
+- See board game details like descriptions, owner name, comments if available, and board game condition
+- Reserve a board game on the Game Details Page
+- See board games you've posted and reserved on the Profile Page
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Return and comment on board games you've reserved
+- remove board games you've posted
+- Add a board game with field validation and auto complete
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Known Issues
+- During Autocomplete, the correct board game needs to be selected via click, not keyboard
+## API Used
 
-### Code Splitting
+Huge shout out to [Board Game Atlas](https://github.com/matiassingers/awesome-readme) for creating such a robust hub for board game information.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
->>>>>>> 1172077 (Initialize project using Create React App)
+## Next Steps
+- Add in walking distance with Google Distance Matrix API
+- MongoDB and 0Auth
+- Social Features like chat and message boards
