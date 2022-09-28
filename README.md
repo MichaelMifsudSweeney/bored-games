@@ -3,7 +3,7 @@
 
 Bored Games is a project that creates a community of board game enthusiasts in your local neighborhood. Apps like Turo and Airbnb exist, so why not an app where you can rent board games from your neighbors?
 
-It is split into two parts. This is the front end, and the backend is located at [here.](https://github.com/MichaelMifsudSweeney/BoredGames-API)
+It is split into two parts. This is the front end, and the backend is located [here.](https://github.com/MichaelMifsudSweeney/BoredGames-API)
 
 ## Tech Stack
 
