@@ -1,5 +1,6 @@
 import React from 'react'
 import './GameComment.scss'
+
 function GameComment({ gameReview }) {
   return (
     <>
