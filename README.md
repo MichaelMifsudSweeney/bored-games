@@ -1,59 +1,25 @@
 
 # Bored Games Web App
 
+<img width="100%" alt="Bored Games Hero" src="https://user-images.githubusercontent.com/3374932/200403390-d1850fd8-be9e-4448-ad74-504bd7c399fe.png">
+
 Bored Games is a project that creates a community of board game enthusiasts in your local neighborhood. Apps like Turo and Airbnb exist, so why not an app where you can rent board games from your neighbors?
 
-It is split into two parts. This is the front end, and the backend is located [here.](https://github.com/MichaelMifsudSweeney/BoredGames-API)
+If you'd like to take a look at the backend is located [here.](https://github.com/MichaelMifsudSweeney/BoredGames-API)
+
+## Screenshots
+
+<img width="100%" alt="Bored Games Screenshot 1" src="https://user-images.githubusercontent.com/3374932/200403451-bf5f5c3f-c655-436a-ab0a-4ff53e10cb06.png">
+<img width="100%" alt="Bored Games Screenshot 2" src="https://user-images.githubusercontent.com/3374932/200403454-0f031ab8-8f84-4371-a538-e9804df9b52f.png">
+<img width="100%" alt="Bored Games Screenshot 3" src="https://user-images.githubusercontent.com/3374932/200403456-45c18612-1e1c-4c61-b481-290ef6a8976d.png">
+
 
 ## Tech Stack
 
-**Client:** React, SCSS, MaterialUI, Board Game Atlas
+**Client:** React, SCSS, MaterialUI, Board Game Atlas, AWS Amplify
 
-**Server:** Node, Express
+**Server:** Node, Express, Heroku
 
-
-## Deployment
-
-#### To Deploy the Back End:
-
-```bash
-  git clone https://github.com/MichaelMifsudSweeney/BoredGames-API.git
-```
-(or download it from Code > Download Zip)
-
-You'll need to create a .env file with variables for PORT and BACKEND_URL (There's also a .env_sample, you can just edit the filename to .env)
-
-You'll need to install node modules with:
-```bash
-  npm i
-```
-
-When you're ready to go you can hit:
-```bash
-  node index.js
-```
- or if you have nodemon:
- ```bash
-  npx nodemon
-```
-
-#### To Deploy the Front End:
-```bash
-  git clone https://github.com/MichaelMifsudSweeney/bored-games.git
-```
-(or download it from Code > Download Zip)
-
-You'll need to create a .env file with variables for REACT_APP_API_URL and REACT_APP_CURRENT_USER_ID (There's also a .env_sample, you can just edit the filename to .env)
-
-You'll need to install node modules with:
-```bash
-  npm i
-```
-
-When you're ready to go you can hit:
-```bash
-  npm start
-```
 ## Features
 
 - Browse through posted board games, see number of players, and playtime
