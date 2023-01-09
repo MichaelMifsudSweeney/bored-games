@@ -5,9 +5,14 @@ import axios from 'axios';
 import './AddBoardGamePage.scss'
 import uuid4 from "uuid4";
 import { useNavigate } from "react-router-dom";
+import { doc, setDoc } from "firebase/firestore"; 
+import {db} from '../../firebase'
+import { UserAuth } from '../../context/AuthContext'
 const CURRENT_USER_ID = process.env.REACT_APP_CURRENT_USER_ID;
 
 function AddBoardGamePage() {
+  const {user} = UserAuth()
+  console.log(user.uid)
   let navigate = useNavigate();
   let [bgName, setbgName] = useState("")
   let [submitHasBeenClicked, setSubmitHasBeenClicked] = useState(false)
@@ -50,21 +55,21 @@ function AddBoardGamePage() {
   }
 
   //function to set the board game condition state
-  const handleChange = (e) => {
+  const handleChange =   (e) => {
     setbgCondition(e.target.value);
   };
 
   //function that validates all fields have been filled and then sends a game object to the server
-  let submitNewBoardGameHandler = (e) => {
+  let submitNewBoardGameHandler = async (e) => {
     e.preventDefault()
     setSubmitHasBeenClicked(true)
 
     if (bgName.length === 0 || bgDescription.length === 0 || bgMinDuration.toString().length === 0 || bgMaxDuration.toString().length === 0 || bgMaxPlayers.toString().length === 0 || bgMinPlayers.toString().length === 0 || bgCondition.length === 0) {
       return
     }
-
+    let newGameId = uuid4()
     let newGame = {
-      "gameId": uuid4(),
+      "gameId": newGameId,
       "gameName": bgName,
       "gameDescription": bgDescription,
       "gameDuration": `${bgMinDuration}-${bgMaxDuration}`,
@@ -73,16 +78,13 @@ function AddBoardGamePage() {
       "gameMaxPlayers": bgMaxPlayers,
       "image": bgImage,
       "gameCategory": "mavSOM8vjH",
-      "ownerId": CURRENT_USER_ID,
+      "ownerId": user.uid,
       "gameAvailability": "AVAILABLE",
       "gameCondition": bgCondition,
       "gameReviews": []
     }
-
-    axios.post(`${process.env.REACT_APP_API_URL}/games/new`, newGame).then(() => {
-      navigate(-1)
-      return
-    })
+    await setDoc(doc(db, "games", newGameId), newGame);
+    
   }
 
   //function to set all the fields after a board game has been selected
