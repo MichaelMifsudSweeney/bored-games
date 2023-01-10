@@ -26,7 +26,7 @@ function Navigation() {
             </NavLink>
           </div>
           <div className="navBar__links">
-            <NavLink to={`profile/${CURRENT_USER_ID}`} className='navBar__link'>
+            <NavLink to={`profile`} className='navBar__link'>
               Profile
             </NavLink>
             {user?.displayName ? <button onClick={handleSignOut}> Logout</button> : <Link to='/signin'> Sign In</Link>}

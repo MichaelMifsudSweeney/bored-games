@@ -4,9 +4,10 @@ import { useParams } from 'react-router-dom'
 import GameDetailsInfo from '../../components/GameDetailsInfo/GameDetailsInfo'
 import { doc, getDoc } from "firebase/firestore";
 import { db } from '../../firebase'
-
+import { UserAuth } from '../../context/AuthContext'
 import './GameDetailsPage.scss'
 function GameDetails({ notify }) {
+  const { user } = UserAuth()
   let [gameDetailsFromServer, setGameDetailsFromServer] = useState({})
   let param = useParams()
   const API_URL = process.env.REACT_APP_API_URL;
@@ -18,8 +19,9 @@ function GameDetails({ notify }) {
     // })
     const docRef = doc(db, "games", param.gameId);
     const docSnap = await getDoc(docRef);
-    console.log(docSnap.data())
+    // console.log(docSnap.data())
     setGameDetailsFromServer(docSnap.data())
+    console.log(gameDetailsFromServer)
   }
 
   useEffect(() => {
