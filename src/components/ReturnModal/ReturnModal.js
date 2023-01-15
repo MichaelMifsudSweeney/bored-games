@@ -22,7 +22,7 @@ function ReturnModal({ selectedGame, setShowModal, loadProfileData }) {
             }
 
             
-            console.log(selectedGame.gameId)
+            // console.log(selectedGame.gameId)
             const serverRef = doc(db, "games", selectedGame.gameId);
 
             await updateDoc(serverRef, {
@@ -34,6 +34,7 @@ function ReturnModal({ selectedGame, setShowModal, loadProfileData }) {
                 "renterId": ""
             });
             
+            setShowModal(false)
 
         }
 
