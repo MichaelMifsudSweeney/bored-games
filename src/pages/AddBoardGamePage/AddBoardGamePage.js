@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { doc, setDoc } from "firebase/firestore"; 
 import {db} from '../../firebase'
 import { UserAuth } from '../../context/AuthContext'
-const CURRENT_USER_ID = process.env.REACT_APP_CURRENT_USER_ID;
+
 
 function AddBoardGamePage() {
   const {user} = UserAuth()

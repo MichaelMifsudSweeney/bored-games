@@ -1,10 +1,9 @@
-import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import GameCardList from '../../components/GameCardList/GameCardList'
 import './HomePage.scss'
 import { collection, getDocs } from "firebase/firestore";
 import { db } from '../../firebase'
-const API_URL = process.env.REACT_APP_API_URL;
+
 function HomePage() {
     let [gameCardData, setGameCardData] = useState([])
 

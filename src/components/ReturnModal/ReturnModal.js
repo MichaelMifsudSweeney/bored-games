@@ -4,7 +4,7 @@ import axios from 'axios';
 import { UserAuth } from '../../context/AuthContext'
 import uuid4 from 'uuid4';
 import { db } from '../../firebase'
-import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
+import { doc, updateDoc, arrayUnion, getDoc } from "firebase/firestore";
 function ReturnModal({ selectedGame, setShowModal, loadProfileData }) {
     const [commentText, setCommentText] = useState('');
     const CURRENT_USER_ID = process.env.REACT_APP_CURRENT_USER_ID;
@@ -13,15 +13,21 @@ function ReturnModal({ selectedGame, setShowModal, loadProfileData }) {
     const onCommentChange = (e) => setCommentText(e.target.value);
 
     let returnGameHandler = async () => {
+
+        const userRef = doc(db, "users", user.uid);
+        const userSnap = await getDoc(userRef);
+
+        // console.log(docSnap.data())
         if (user && user.uid) {
             let objectToSend = {
                 "currentUser": user.uid,
-                "commentText": commentText,
+                "commentName": userSnap.data().userName,
+                    "commentText": commentText,
                 "datePosted": Date.now(),
                 "commentId": uuid4()
             }
 
-            
+
             // console.log(selectedGame.gameId)
             const serverRef = doc(db, "games", selectedGame.gameId);
 
@@ -33,7 +39,7 @@ function ReturnModal({ selectedGame, setShowModal, loadProfileData }) {
                 "gameAvailability": "AVAILABLE",
                 "renterId": ""
             });
-            
+
             setShowModal(false)
 
         }
@@ -42,7 +48,7 @@ function ReturnModal({ selectedGame, setShowModal, loadProfileData }) {
         // const API_URL = process.env.REACT_APP_API_URL;
         // let UrlToPostTo = `${API_URL}/games/comment/${selectedGame.gameId}`
 
-        
+
 
         //add a comment to to the game.
         //add an object to the comment array

@@ -1,27 +1,28 @@
-import axios from 'axios';
+
 import React from 'react'
 import GameCommentsList from '../GameCommentsList/GameCommentsList';
 import GameCondition from '../GameCondition/GameCondition';
 import './GameDetailsInfo.scss'
 import { db } from '../../firebase'
-import { useNavigate } from 'react-router-dom';
+
 import { doc, updateDoc } from "firebase/firestore";
 import { UserAuth } from '../../context/AuthContext'
 function GameDetailsInfo({ gameDetailsFromServer, notify }) {
   const { user } = UserAuth()
-  const navigate = useNavigate();
-  const CURRENT_USER_ID = process.env.REACT_APP_CURRENT_USER_ID;
-
-  function createMarkup() {
-    return { __html: gameDetailsFromServer.gameDescription };
-  }
-  console.log(gameDetailsFromServer)
-  let reserveHandler = async () => {
-
-    let objToSend = {
-      "gameId": gameDetailsFromServer.gameId,
-      "currentUser": user
+  
+  
+    function createMarkup() {
+      return { __html: gameDetailsFromServer.gameDescription };
     }
+  // console.log(gameDetailsFromServer)
+  let reserveHandler = async () => {
+    console.log(user.uid)
+    
+
+    
+
+
+    
 
     //update renterId to the current user
     const reserveDocRef = doc(db, "games", gameDetailsFromServer.gameId);
@@ -29,9 +30,10 @@ function GameDetailsInfo({ gameDetailsFromServer, notify }) {
 
     await updateDoc(reserveDocRef, {
       "renterId": user.uid,
-      "gameAvailability": "UNAVAILABLE"
+      "gameAvailability": "UNAVAILABLE",
+      
     });
-    navigate("/profile")
+    // navigate("/profile")
     //update game availability
 
 

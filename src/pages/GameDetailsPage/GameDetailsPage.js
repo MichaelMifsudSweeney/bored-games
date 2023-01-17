@@ -1,16 +1,13 @@
-import axios from 'axios'
+
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import GameDetailsInfo from '../../components/GameDetailsInfo/GameDetailsInfo'
 import { doc, getDoc } from "firebase/firestore";
 import { db } from '../../firebase'
-import { UserAuth } from '../../context/AuthContext'
 import './GameDetailsPage.scss'
 function GameDetails({ notify }) {
-  const { user } = UserAuth()
   let [gameDetailsFromServer, setGameDetailsFromServer] = useState({})
   let param = useParams()
-  const API_URL = process.env.REACT_APP_API_URL;
 
   //function to get the game details from the server using the params
   let getGameDetailsDataFromServer = async () => {
@@ -21,7 +18,7 @@ function GameDetails({ notify }) {
     const docSnap = await getDoc(docRef);
     // console.log(docSnap.data())
     setGameDetailsFromServer(docSnap.data())
-    console.log(gameDetailsFromServer)
+    
   }
 
   useEffect(() => {
