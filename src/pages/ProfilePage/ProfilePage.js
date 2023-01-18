@@ -33,12 +33,12 @@ function ProfilePage() {
       const userNameQuerySnapshot = await getDoc(userNameRef);
 
       if (userNameQuerySnapshot.exists()) {
-        console.log("Document data:", userNameQuerySnapshot.data());
+        // console.log("Document data:", userNameQuerySnapshot.data());
         let documentData = userNameQuerySnapshot.data()
         setUserName(documentData.userName)
       } else {
         // doc.data() will be undefined in this case
-        console.log("No such document!");
+        // console.log("No such document!");
       }
 
 
@@ -69,7 +69,8 @@ function ProfilePage() {
 
     let doesUserExistInDatabase = async () => {
       //if a users id exists
-      if (user.uid !== undefined) {
+      if (user && user.uid) {
+        
         const docRef = doc(db, "users", user.uid);
         const docSnap = await getDoc(docRef);
         //if a document for them exists
@@ -82,15 +83,8 @@ function ProfilePage() {
             userId: user.uid,
             userName: generateUsername()
           });
-
-
-
         }
       }
-
-
-
-
     }
 
     doesUserExistInDatabase()
@@ -126,12 +120,14 @@ function ProfilePage() {
             </label>
             <button>Update Username</button>
           </form>
-          <ReservedGameList
+          {gamesRented.length > 0 && <ReservedGameList
             gamesRented={gamesRented}
             setSelectedGame={setSelectedGame}
             setShowModal={setShowModal}
-          />
-          <PostedGames gamesOwned={gamesOwned} loadProfileData={loadProfileData} />
+          /> }
+          
+          {user && <PostedGames gamesOwned={gamesOwned} loadProfileData={loadProfileData} /> }
+          
         </div>
       </div>
     </>

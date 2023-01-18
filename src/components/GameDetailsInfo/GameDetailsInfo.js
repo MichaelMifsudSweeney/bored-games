@@ -7,9 +7,10 @@ import { db } from '../../firebase'
 
 import { doc, updateDoc } from "firebase/firestore";
 import { UserAuth } from '../../context/AuthContext'
+import { useNavigate } from "react-router-dom";
 function GameDetailsInfo({ gameDetailsFromServer, notify }) {
   const { user } = UserAuth()
-  
+  const navigate = useNavigate();
   
     function createMarkup() {
       return { __html: gameDetailsFromServer.gameDescription };
@@ -33,7 +34,7 @@ function GameDetailsInfo({ gameDetailsFromServer, notify }) {
       "gameAvailability": "UNAVAILABLE",
       
     });
-    // navigate("/profile")
+    navigate("/profile")
     //update game availability
 
 

@@ -19,11 +19,12 @@ function PostedGames({ gamesOwned, loadProfileData }) {
             </div>
           </div>
         </Link>
-        <div className="postedGameList__list">
+        {gamesOwned.length > 0 && <div className="postedGameList__list">
           {gamesOwned.map(gameOwned => {
             return <GamePosted gameOwned={gameOwned} loadProfileData={loadProfileData} key={gameOwned.gameId} />
           })}
-        </div>
+        </div>}
+        
       </div>
     </>
 

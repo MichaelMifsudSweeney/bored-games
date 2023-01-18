@@ -62,6 +62,7 @@ function ReturnModal({ selectedGame, setShowModal, loadProfileData }) {
         //     loadProfileData()
         //     setShowModal(false)
         // })
+        loadProfileData()
     }
 
     return (

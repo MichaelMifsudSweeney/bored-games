@@ -84,7 +84,7 @@ function AddBoardGamePage() {
       "gameReviews": []
     }
     await setDoc(doc(db, "games", newGameId), newGame);
-    
+    navigate("/profile")
   }
 
   //function to set all the fields after a board game has been selected
