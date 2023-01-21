@@ -149,15 +149,18 @@ function ProfilePage() {
       {showModal ? <ReturnModal selectedGame={selectedGame} setShowModal={setShowModal} loadProfileData={loadProfileData} /> : <div></div>}
       <div className="profile">
         <div className="profile__container">
+          {!isEmpty(user) && <div className="account__section">
           <h2 className='reservedGameList__title'>Account</h2>
-          <form onSubmit={(e) => accountUpdateHandler(e)}>
-            <label>
+          <form className='profile__userName-group' onSubmit={(e) => accountUpdateHandler(e)}>
+            <label className='profile__userName-label'>
               Username
               <input type="text" className='profile__userName' onChange={(e) => setUserName(e.target.value)} value={userName} />
             </label>
-            <button>Update Username</button>
+            <button className='profile__userName-submit'>UPDATE USERNAME</button>
           </form>
-          {user?.displayName ? <button onClick={handleSignOut}> Sign out</button> : <Link to='/signin'> Sign In</Link>}
+          </div>}
+          
+          
           {gamesRented.length > 0 && <ReservedGameList
             gamesRented={gamesRented}
             setSelectedGame={setSelectedGame}
@@ -165,8 +168,9 @@ function ProfilePage() {
           />}
 
           {!isEmpty(user) && <PostedGames gamesOwned={gamesOwned} loadProfileData={loadProfileData} />}
-
+          {!isEmpty(user) ? <button className='profile__sign-out-button' onClick={handleSignOut}> SIGN OUT</button> : <Link to='/signin' onClick={() => console.log("selected")}> Sign In</Link>}
         </div>
+        
       </div>
     </>
   )

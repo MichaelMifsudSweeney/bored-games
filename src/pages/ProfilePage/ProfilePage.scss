@@ -15,5 +15,33 @@
 
     &__userName {
         @include input-styling;
+        width: 100%
     }
+
+    &__userName-group {
+        @include flex-column;
+        
+    }
+
+    &__userName-label {
+        @include flex-column;
+        @include label-or-button;
+    }
+
+    &__userName-submit {
+        @include button-styling;
+        background-color: white;
+        color: $action;
+    }
+
+    &__sign-out-button {
+        @include button-styling;
+        @include label-or-button;
+        background-color: rgb(246, 246, 246);
+        width: 100%;
+        margin: $spacing-4 0 $spacing-4;
+    
+        color: $destructive-action;
+    }
+
 }
