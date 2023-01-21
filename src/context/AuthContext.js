@@ -12,8 +12,11 @@ export const AuthContextProvider = ({ children }) => {
         signInWithRedirect(auth, provider)
     }
 
-    const logOut = () => {
-        signOut(auth)
+    const logOut = async () => {
+        await signOut(auth)
+        setUser({}, console.log("just finished the logout function in authcontext", user))
+        
+        
     }
 
     useEffect(() => {

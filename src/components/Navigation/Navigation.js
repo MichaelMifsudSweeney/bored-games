@@ -8,14 +8,7 @@ const CURRENT_USER_ID = process.env.REACT_APP_CURRENT_USER_ID;
 
 
 function Navigation() {
-  const {user, logOut} = UserAuth()
-  const handleSignOut = async () => {
-    try {
-       await logOut()
-    } catch (error) {
-       console.log(error)
-    }
-}
+  
   return (
     <>
       <section className='navBar'>
@@ -29,7 +22,7 @@ function Navigation() {
             <NavLink to={`profile`} className='navBar__link'>
               Profile
             </NavLink>
-            {user?.displayName ? <button onClick={handleSignOut}> Logout</button> : <Link to='/signin'> Sign In</Link>}
+
           </div>
         </div>
       </section>

@@ -9,10 +9,37 @@ import { UserAuth } from '../../context/AuthContext'
 import { collection, query, where, getDocs, getDoc, doc, setDoc, updateDoc } from "firebase/firestore";
 import { db } from '../../firebase'
 import { generateUsername } from 'friendly-username-generator';
+import { Link } from 'react-router-dom'
+
+function isEmpty(obj) {
+  if (obj === undefined || obj === null || Object.keys(obj).length === 0) {
+    console.log(obj)
+    return true
+  } else {
+    return false
+  }
+
+}
+
 function ProfilePage() {
-  const { logOut, user } = UserAuth()
+  const { logOut, user, setUser } = UserAuth()
+
+  const handleSignOut = async () => {
+    try {
+      await logOut()
+      console.log("just logged out", user)
+      
+      console.log("22")
+      setUserName("")
+      setGamesOwned([])
+      setGamesRented([])
+      setUser(null)
+    } catch (error) {
+      console.log(error)
+    }
+  }
   let param = useParams()
-  
+
   let [gamesOwned, setGamesOwned] = useState([])
   let [gamesRented, setGamesRented] = useState([])
   let [selectedGame, setSelectedGame] = useState({})
@@ -21,9 +48,11 @@ function ProfilePage() {
 
   //loads the profile data based on param
   let loadProfileData = async () => {
+    console.log("user at the top of loadProfileData", user)
     const gamesCollectionRef = collection(db, "games");
-    
+
     if (user && user.uid) {
+      console.log("detected there's user", user)
       const gamesOwnedQuery = query(gamesCollectionRef, where("ownerId", "==", user.uid));
       const gamesRentedQuery = query(gamesCollectionRef, where("renterId", "==", user.uid));
       const userNameRef = doc(db, "users", user.uid);
@@ -36,12 +65,7 @@ function ProfilePage() {
         // console.log("Document data:", userNameQuerySnapshot.data());
         let documentData = userNameQuerySnapshot.data()
         setUserName(documentData.userName)
-      } else {
-        // doc.data() will be undefined in this case
-        // console.log("No such document!");
       }
-
-
 
       let ownedGamesForState = []
       let rentedGamesForState = []
@@ -51,26 +75,33 @@ function ProfilePage() {
       rentedQuerySnapshot.forEach((doc) => {
         rentedGamesForState.push(doc.data())
       })
+      console.log("65")
       setGamesOwned(ownedGamesForState)
       setGamesRented(rentedGamesForState)
-    }
+    } 
+    // else {
+    //   console.log("no user or user.id", user)
+    //   setGamesOwned([], console.log("setGamesOwned", gamesOwned))
+    //   setGamesRented([])
+    // }
 
+    
+    
+    // if (isEmpty(user)) {
+    //   setGamesOwned([])
+    //   setGamesRented([])
 
-
-    if (Object.keys(param).length !== 0) {
-      // axios.get(`${API_URL}/user/${param.userId}`).then((response) => {
-      //   setGamesOwned(response.data.gamesOwned)
-      //   setGamesRented(response.data.gamesRented)
-      // })
-
-    }
+    // }
+    console.log("user at the bottom of loadProfileData", user)
   }
   useEffect(() => {
-
+    console.log("user has changed!", user)
     let doesUserExistInDatabase = async () => {
       //if a users id exists
+
+
       if (user && user.uid) {
-        
+
         const docRef = doc(db, "users", user.uid);
         const docSnap = await getDoc(docRef);
         //if a document for them exists
@@ -85,12 +116,18 @@ function ProfilePage() {
           });
         }
       }
+
+
     }
 
     doesUserExistInDatabase()
     loadProfileData()
 
   }, [user])
+
+  useEffect(() => {
+    console.log("useEffect from gamesOwned", gamesOwned)
+  },[gamesOwned])
 
 
 
@@ -116,18 +153,19 @@ function ProfilePage() {
           <form onSubmit={(e) => accountUpdateHandler(e)}>
             <label>
               Username
-              <input type="text" onChange={(e) => setUserName(e.target.value)} value={userName} />
+              <input type="text" className='profile__userName' onChange={(e) => setUserName(e.target.value)} value={userName} />
             </label>
             <button>Update Username</button>
           </form>
+          {user?.displayName ? <button onClick={handleSignOut}> Sign out</button> : <Link to='/signin'> Sign In</Link>}
           {gamesRented.length > 0 && <ReservedGameList
             gamesRented={gamesRented}
             setSelectedGame={setSelectedGame}
             setShowModal={setShowModal}
-          /> }
-          
-          {user && <PostedGames gamesOwned={gamesOwned} loadProfileData={loadProfileData} /> }
-          
+          />}
+
+          {!isEmpty(user) && <PostedGames gamesOwned={gamesOwned} loadProfileData={loadProfileData} />}
+
         </div>
       </div>
     </>
