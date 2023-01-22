@@ -5,13 +5,13 @@ import axios from 'axios';
 import './AddBoardGamePage.scss'
 import uuid4 from "uuid4";
 import { useNavigate } from "react-router-dom";
-import { doc, setDoc } from "firebase/firestore"; 
-import {db} from '../../firebase'
+import { doc, setDoc, getDoc } from "firebase/firestore";
+import { db } from '../../firebase'
 import { UserAuth } from '../../context/AuthContext'
 
 
 function AddBoardGamePage() {
-  const {user} = UserAuth()
+  const { user } = UserAuth()
   let navigate = useNavigate();
   let [bgName, setbgName] = useState("")
   let [submitHasBeenClicked, setSubmitHasBeenClicked] = useState(false)
@@ -28,6 +28,8 @@ function AddBoardGamePage() {
   const [options, setOptions] = useState([
     { label: 'Type to search', id: 2 },
   ]);
+
+
 
   useEffect(() => {
   }, [bgCondition])
@@ -54,13 +56,17 @@ function AddBoardGamePage() {
   }
 
   //function to set the board game condition state
-  const handleChange =   (e) => {
+  const handleChange = (e) => {
     setbgCondition(e.target.value);
   };
 
   //function that validates all fields have been filled and then sends a game object to the server
   let submitNewBoardGameHandler = async (e) => {
     e.preventDefault()
+
+    const userRef = doc(db, "users", user.uid);
+    const userSnap = await getDoc(userRef);
+
     setSubmitHasBeenClicked(true)
 
     if (bgName.length === 0 || bgDescription.length === 0 || bgMinDuration.toString().length === 0 || bgMaxDuration.toString().length === 0 || bgMaxPlayers.toString().length === 0 || bgMinPlayers.toString().length === 0 || bgCondition.length === 0) {
@@ -78,6 +84,7 @@ function AddBoardGamePage() {
       "image": bgImage,
       "gameCategory": "mavSOM8vjH",
       "ownerId": user.uid,
+      "ownerName": userSnap.data().userName,
       "gameAvailability": "AVAILABLE",
       "gameCondition": bgCondition,
       "gameReviews": []
@@ -120,7 +127,7 @@ function AddBoardGamePage() {
         <div className="add-board-game__container">
           <form onSubmit={(e) => submitNewBoardGameHandler(e)}>
             <h2 className='add-board-game__title'>Add a Board Game</h2>
-            
+
             <Autocomplete
               sx={{
                 width: "100%",
