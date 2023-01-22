@@ -46,6 +46,10 @@ function GameDetailsInfo({ gameDetailsFromServer, notify }) {
     // })
   }
 
+  if(!gameDetailsFromServer) {
+    return
+  }
+
   return (<>
     <div className="gameDetailsInfo">
       <div className="gameDetailsInfo__left">

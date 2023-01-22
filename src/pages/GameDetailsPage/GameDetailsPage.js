@@ -6,7 +6,7 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from '../../firebase'
 import './GameDetailsPage.scss'
 function GameDetails({ notify }) {
-  let [gameDetailsFromServer, setGameDetailsFromServer] = useState({})
+  let [gameDetailsFromServer, setGameDetailsFromServer] = useState(null)
   let param = useParams()
 
   //function to get the game details from the server using the params

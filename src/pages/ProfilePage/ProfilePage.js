@@ -10,6 +10,7 @@ import { collection, query, where, getDocs, getDoc, doc, setDoc, updateDoc } fro
 import { db } from '../../firebase'
 import { generateUsername } from 'friendly-username-generator';
 import { Link } from 'react-router-dom'
+import Signin from '../SignIn/SignIn';
 
 function isEmpty(obj) {
   if (obj === undefined || obj === null || Object.keys(obj).length === 0) {
@@ -44,6 +45,7 @@ function ProfilePage() {
   let [gamesRented, setGamesRented] = useState([])
   let [selectedGame, setSelectedGame] = useState({})
   let [userName, setUserName] = useState("")
+  let [userNameFromServer, setUserNameFromServer] = useState("")
   let [showModal, setShowModal] = useState(false)
 
   //loads the profile data based on param
@@ -65,6 +67,7 @@ function ProfilePage() {
         // console.log("Document data:", userNameQuerySnapshot.data());
         let documentData = userNameQuerySnapshot.data()
         setUserName(documentData.userName)
+        setUserNameFromServer(documentData.userName)
       }
 
       let ownedGamesForState = []
@@ -144,6 +147,8 @@ function ProfilePage() {
   }
 
 
+
+
   return (
     <>
       {showModal ? <ReturnModal selectedGame={selectedGame} setShowModal={setShowModal} loadProfileData={loadProfileData} /> : <div></div>}
@@ -156,7 +161,7 @@ function ProfilePage() {
               Username
               <input type="text" className='profile__userName' onChange={(e) => setUserName(e.target.value)} value={userName} />
             </label>
-            <button className='profile__userName-submit'>UPDATE USERNAME</button>
+            <button className={`profile__userName-submit ${userNameFromServer !== userName && "profile__userName-submit--enabled" }` } >UPDATE USERNAME</button>
           </form>
           </div>}
           
@@ -168,7 +173,7 @@ function ProfilePage() {
           />}
 
           {!isEmpty(user) && <PostedGames gamesOwned={gamesOwned} loadProfileData={loadProfileData} />}
-          {!isEmpty(user) ? <button className='profile__sign-out-button' onClick={handleSignOut}> SIGN OUT</button> : <Link to='/signin' onClick={() => console.log("selected")}> Sign In</Link>}
+          {!isEmpty(user) ? <button className='profile__sign-out-button' onClick={handleSignOut}> SIGN OUT</button> : <Signin />}
         </div>
         
       </div>
