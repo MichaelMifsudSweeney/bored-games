@@ -12,7 +12,6 @@ import { UserAuth } from '../../context/AuthContext'
 
 function AddBoardGamePage() {
   const {user} = UserAuth()
-  console.log(user.uid)
   let navigate = useNavigate();
   let [bgName, setbgName] = useState("")
   let [submitHasBeenClicked, setSubmitHasBeenClicked] = useState(false)

@@ -17,12 +17,7 @@ function Signin() {
 
     useEffect(() => {
         if (user && user.uid) {
-            //if there is a user
-            //query to see if there's a user with that id
-
-            console.log("conditions met", user)
             navigate('/profile')
-            //query the database and if no user exists with that id, create one and give them a username.
         }
     }, [user])
 

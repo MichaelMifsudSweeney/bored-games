@@ -15,15 +15,8 @@ function GameDetailsInfo({ gameDetailsFromServer, notify }) {
     function createMarkup() {
       return { __html: gameDetailsFromServer.gameDescription };
     }
-  // console.log(gameDetailsFromServer)
+  
   let reserveHandler = async () => {
-    console.log(user.uid)
-    
-
-    
-
-
-    
 
     //update renterId to the current user
     const reserveDocRef = doc(db, "games", gameDetailsFromServer.gameId);
@@ -35,15 +28,6 @@ function GameDetailsInfo({ gameDetailsFromServer, notify }) {
       
     });
     navigate("/profile")
-    //update game availability
-
-
-
-    // axios.post(`${process.env.REACT_APP_API_URL}/games/reserve`, objToSend).then(() => {
-    //   navigate('/home');
-    //   notify()
-    //   return
-    // })
   }
 
   if(!gameDetailsFromServer) {
