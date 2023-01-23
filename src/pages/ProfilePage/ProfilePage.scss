@@ -11,5 +11,45 @@
         width: 100%;
         padding: 0 $spacing-4;
         max-width: 900px;
+        display: flex;
+        flex-direction: column;
     }
+
+    &__userName {
+        @include input-styling;
+        width: 100%
+    }
+
+    &__userName-group {
+        @include flex-column;
+        
+    }
+
+    &__userName-label {
+        @include flex-column;
+        @include label-or-button;
+    }
+
+    &__userName-submit {
+        @include button-styling;
+        background-color: white;
+        color: $disabled;
+
+        &--enabled {
+            color: $action
+        }
+
+    }
+
+    &__sign-out-button {
+        @include button-styling;
+        @include label-or-button;
+        background-color: rgb(246, 246, 246);
+        width: 100%;
+        max-width: 400px;
+        margin: $spacing-4 auto $spacing-4;
+        
+        color: $destructive-action;
+    }
+
 }

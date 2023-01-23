@@ -1,15 +1,18 @@
 import axios from 'axios'
 import React from 'react'
 import './GamePosted.scss'
+import { doc, deleteDoc } from "firebase/firestore";
+
+import { db } from '../../firebase'
 const API_URL = process.env.REACT_APP_API_URL;
 
 function GamePosted({ gameOwned, loadProfileData }) {
 
-  let removeHandler = () => {
-    axios.delete((`${API_URL}/games/${gameOwned.gameId}`))
-      .then(() => {
-        loadProfileData()
-      })
+  let removeHandler = async () => {
+    await deleteDoc(doc(db, "games", gameOwned.gameId));
+    loadProfileData()
+    
+
   }
 
   return (<>

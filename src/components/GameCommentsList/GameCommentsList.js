@@ -3,7 +3,7 @@ import GameComment from '../GameComment/GameComment'
 import './GameCommentsList.scss'
 
 function GameCommentsList({ gameReviews }) {
-  {
+  
     return (<>
       <div className="gameCommentsList__title">Comments</div>
       <div className="gameCommentsList">
@@ -13,7 +13,7 @@ function GameCommentsList({ gameReviews }) {
       </div>
     </>
     )
-  }
+  
 }
 
 export default GameCommentsList

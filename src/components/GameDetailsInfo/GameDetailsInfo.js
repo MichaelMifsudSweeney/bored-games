@@ -1,29 +1,37 @@
-import axios from 'axios';
+
 import React from 'react'
 import GameCommentsList from '../GameCommentsList/GameCommentsList';
 import GameCondition from '../GameCondition/GameCondition';
 import './GameDetailsInfo.scss'
-import { useNavigate } from 'react-router-dom';
+import { db } from '../../firebase'
 
+import { doc, updateDoc } from "firebase/firestore";
+import { UserAuth } from '../../context/AuthContext'
+import { useNavigate } from "react-router-dom";
 function GameDetailsInfo({ gameDetailsFromServer, notify }) {
-
+  const { user } = UserAuth()
   const navigate = useNavigate();
-  const CURRENT_USER_ID = process.env.REACT_APP_CURRENT_USER_ID;
+  
+    function createMarkup() {
+      return { __html: gameDetailsFromServer.gameDescription };
+    }
+  
+  let reserveHandler = async () => {
 
-  function createMarkup() {
-    return { __html: gameDetailsFromServer.gameDescription };
+    //update renterId to the current user
+    const reserveDocRef = doc(db, "games", gameDetailsFromServer.gameId);
+    // To update age and favorite color:
+
+    await updateDoc(reserveDocRef, {
+      "renterId": user.uid,
+      "gameAvailability": "UNAVAILABLE",
+      
+    });
+    navigate("/profile")
   }
 
-  let reserveHandler = () => {
-    let objToSend = {
-      "gameId": gameDetailsFromServer.gameId,
-      "currentUser": CURRENT_USER_ID
-    }
-    axios.post(`${process.env.REACT_APP_API_URL}/games/reserve`, objToSend).then(() => {
-      navigate('/home');
-      notify()
-      return
-    })
+  if(!gameDetailsFromServer) {
+    return
   }
 
   return (<>

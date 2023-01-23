@@ -1,9 +1,14 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import './Navigation.scss'
+import { UserAuth } from '../../context/AuthContext'
+import { Link } from 'react-router-dom'
 const CURRENT_USER_ID = process.env.REACT_APP_CURRENT_USER_ID;
 
+
+
 function Navigation() {
+  
   return (
     <>
       <section className='navBar'>
@@ -14,12 +19,10 @@ function Navigation() {
             </NavLink>
           </div>
           <div className="navBar__links">
-            <NavLink to={`profile/${CURRENT_USER_ID}`} className='navBar__link'>
+            <NavLink to={`profile`} className='navBar__link'>
               Profile
             </NavLink>
-            <div className="navBar__link">
-              Sign Out
-            </div>
+
           </div>
         </div>
       </section>

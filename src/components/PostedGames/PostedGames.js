@@ -5,6 +5,8 @@ import './PostedGames.scss'
 import logo from '../../assets/icons/add_FILL0_wght700_GRAD0_opsz48.svg';
 
 function PostedGames({ gamesOwned, loadProfileData }) {
+
+
   return (
     <>
       <div className="postedGameList">
@@ -19,11 +21,12 @@ function PostedGames({ gamesOwned, loadProfileData }) {
             </div>
           </div>
         </Link>
-        <div className="postedGameList__list">
+        {gamesOwned.length > 0 && <div className="postedGameList__list">
           {gamesOwned.map(gameOwned => {
             return <GamePosted gameOwned={gameOwned} loadProfileData={loadProfileData} key={gameOwned.gameId} />
           })}
-        </div>
+        </div>}
+        
       </div>
     </>
 
