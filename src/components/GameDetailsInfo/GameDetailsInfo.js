@@ -34,6 +34,7 @@ function GameDetailsInfo({ gameDetailsFromServer, notify }) {
     return
   }
 
+  
   return (<>
     <div className="gameDetailsInfo">
       <div className="gameDetailsInfo__left">
